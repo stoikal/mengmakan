@@ -1,0 +1,29 @@
+.listContainer {
+  border: 1px dashed greenyellow;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  gap: 24px;
+}
+
+.listContainer > div {
+  max-width: 600px;
+}
+
+@media screen and (min-width: 800px) {
+  .listContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+ }
+
+@media screen and (min-width: 1200px) {
+  .listContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .listContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

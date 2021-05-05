@@ -1,0 +1,46 @@
+.container {
+  display: block;
+}
+
+.button {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transition: all 200ms;
+  background-color: aqua;
+}
+
+.overlay.open {
+  display: block;
+}
+
+.sideNavContainer {
+  z-index: 1;
+  position: fixed;
+  background-color: green;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100vh;
+  transform: translateX(200px);
+  transition: transform 200ms;
+}
+
+.sideNavContainer.open {
+  transform: translateX(0);
+}
+
+@media screen and (min-width: 800px) {
+  .button {
+    display: none;
+  }
+ }

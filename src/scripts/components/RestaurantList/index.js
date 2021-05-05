@@ -1,4 +1,5 @@
 import RestaurantCard from '../RestaurantCard';
+import styles from './listContainer.module.css';
 
 export default class RestaurantList {
   constructor(list) {
@@ -7,10 +8,11 @@ export default class RestaurantList {
 
   render() {
     const wrapperEl = document.createElement('div');
-    wrapperEl.className = 'restaurant-list-wrapper';
+    wrapperEl.className = styles.listContainer;
     
     this.list.forEach((restaurant) => {
-      const card = new RestaurantCard(restaurant)
+      const card = new RestaurantCard(restaurant);
+
       wrapperEl.append(
         card.render()
       )

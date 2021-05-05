@@ -1,5 +1,15 @@
 import styles from './card.module.css';
 
+const truncate = (str, maxLength) => {
+  const length = str.length;
+  
+  if (length <= maxLength) {
+    return str
+  } else {
+    return str.slice(0, maxLength) + '...'
+  }
+}
+
 export default class RestaurantCard {
   constructor(detail) {
     this.restaurant = detail || {};
@@ -14,16 +24,17 @@ export default class RestaurantCard {
     card.className = styles.container;
     card.innerHTML = `
       <div class=${styles.thumbWrapper}>
-        <img src=${imgSrc} alt="suasana restoran"/>
+  
         <span>${city}</span>
       </div>
       <div>
         <span>Rating: ${rating}</span>
         <p>${name}</p>
-        <p>${description}</p>
+        <p>${truncate(description, 300)}</p>
       </div>
     `
     return card;
   }
 }
 
+{/* <img src=${imgSrc} alt="suasana restoran"/> */}
