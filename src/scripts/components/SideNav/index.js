@@ -11,7 +11,7 @@ export default class SideNav {
     nav.innerHTML = `
       <div><a href="/">Home</a></div>
       <div><a href="/">Favorites</a></div>
-      <div><a href="/">Home</a></div>
+      <div><a href="/">About Us</a></div>
     `
     nav.addEventListener('click', (e) => e.stopPropagation())
     
@@ -29,7 +29,7 @@ export default class SideNav {
     const button = document.createElement('button');
     button.className =styles.button;
     button.innerHTML = `
-      <span>hello</span>
+      <span>&#9776;</span>
     `
 
     return button;

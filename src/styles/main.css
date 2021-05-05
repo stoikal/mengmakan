@@ -1,5 +1,51 @@
 @import url('./normalize.css');
 
-img {
+
+/* :root {
+  --color-1: #e40017;
+  --color-2: #f4c983;
+  --color-3: #5b6d5b;
+  --color-4: #484018;
+} */
+
+:root {
+  --color-1: #91091e;
+  --color-2: #da723c;
+  --color-3: #c39e5c;
+  --color-4: #fdf1d6;
+}
+
+#header {
+  background-color: var(--color-1);
+  color: beige;
+  display: flex;
+  justify-content: space-between;
+}
+
+#header > h1 {
+  margin: 0;
+}
+
+.nav-lg {
+  display: none;
+}
+
+.nav-lg ul {
+  list-style: none;
+}
+
+.nav-lg li {
+  display: inline;
+}
+
+#jumbotron-wrapper > img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 800px) {
+  .nav-lg {
     display: block;
+  }
 }

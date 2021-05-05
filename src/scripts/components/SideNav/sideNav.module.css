@@ -3,8 +3,14 @@
 }
 
 .button {
-  position: relative;
-  overflow: hidden;
+  border: none;
+  padding: none;
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  font-size: x-large;
+  color: white;
+  background-color: transparent;
 }
 
 .overlay {
