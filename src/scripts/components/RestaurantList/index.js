@@ -1,4 +1,4 @@
-import RestaurantCard from './RestaurantCard';
+import RestaurantCard from '../RestaurantCard';
 
 export default class RestaurantList {
   constructor(list) {

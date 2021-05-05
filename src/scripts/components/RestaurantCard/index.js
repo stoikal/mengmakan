@@ -1,4 +1,4 @@
-import * as styles from './card.module.css'
+import styles from './card.module.css';
 
 export default class RestaurantCard {
   constructor(detail) {
@@ -6,12 +6,22 @@ export default class RestaurantCard {
   }
 
   render() {
-    console.log("styles", styles)
-    const { city, description, id, name, pictureId, rating } = this.restaurant;
+    console.log(styles)
+    // Minimal menampilkan gambar, kota, rating, dan deskripsi
+    const { city, description, id, name, pictureId: imgSrc, rating } = this.restaurant;
     const card = document.createElement('div');
-    card.className = 'restaurant-card';
+
+    card.className = styles.container;
     card.innerHTML = `
-      <span>${name}</span>
+      <div class=${styles.thumbWrapper}>
+        <img src=${imgSrc} alt="suasana restoran"/>
+        <span>${city}</span>
+      </div>
+      <div>
+        <span>Rating: ${rating}</span>
+        <p>${name}</p>
+        <p>${description}</p>
+      </div>
     `
     return card;
   }

@@ -1,3 +1,22 @@
 .container {
-  border: 1px solid black;
+  width: 500px;
+  border-radius: 5px;
+  border: 1px solid gray;
 }
+
+.thumbWrapper {
+  position: relative;
+  border: 1px solid red;
+  width: 100%;
+}
+
+.thumbWrapper > img {
+  width: 100%;
+}
+
+.thumbWrapper > span {
+  background-color: white;
+  position: absolute;
+  top: 16px
+}
+
