@@ -20,6 +20,8 @@ body {
   display: flex;
   justify-content: space-between;
   max-width: 1600px;
+  overflow: hidden;
+  flex-wrap: wrap-reverse;
 }
 
 #header > h1 {
@@ -51,7 +53,7 @@ body {
 
 #jumbotron-wrapper > img {
   width: 100%;
-  height: 200px;
+  max-height: 16em;
   object-fit: cover;
 }
 
@@ -62,12 +64,18 @@ body {
   transform: translate(-50%, -50%) skew(-10deg);
   background-color: beige;
   color: var(--color-2);
+  font-size: 1.5em;
 }
 
 footer {
   text-align: center;
   background-color: var(--color-main-2);
   color: beige;
+  margin-top: 1em;
+}
+
+footer span {
+  line-height: 3em;
 }
 
 @media screen and (min-width: 800px) {

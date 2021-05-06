@@ -1,11 +1,11 @@
 .listContainer {
   max-width: 1600px;
   margin: 0 auto;
-  border: 1px dashed greenyellow;
   display: grid;
   grid-template-columns: 1fr;
   place-items: center;
-  gap: 24px;
+  gap: 1.5em;
+  padding: 1.5em;
 }
 
 .listContainer > div {

@@ -8,7 +8,7 @@
   border-radius: 50%;
   height: 48px;
   width: 48px;
-  font-size: x-large;
+  font-size: 1.5em;
   color: white;
   background-color: transparent;
 }
@@ -54,11 +54,12 @@
 
 .sideNavContainer > div:first-child {
   text-align: right;
+  padding: 0 1.5em;
 }
 
 .sideNavContainer > div:not(:first-child) {
   min-height: 48px;
-  padding: 8px
+  padding: 0 1em;
 }
 
 @media screen and (min-width: 800px) {
