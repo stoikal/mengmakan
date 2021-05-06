@@ -33,7 +33,7 @@
   --sidenav-width: 400px;
   z-index: 1;
   position: fixed;
-  background-color: #2E294E;
+  background-color: var(--color-main-2);
   top: 0;
   right: 0;
   max-width: 100%;
