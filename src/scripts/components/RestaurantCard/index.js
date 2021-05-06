@@ -22,6 +22,7 @@ export default class RestaurantCard {
     const card = document.createElement('div');
 
     card.className = styles.container;
+    card.tabIndex = 0;
     card.innerHTML = `
       <div class=${styles.thumbWrapper}>
         <img src=${imgSrc} alt="penampakan restoran"/>
