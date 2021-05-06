@@ -35,6 +35,7 @@ body {
 
 .nav-lg ul {
   list-style: none;
+  margin: 0.2em;
 }
 
 .nav-lg li {
@@ -43,8 +44,15 @@ body {
 }
 
 .nav-lg a {
+  display: inline-block;
+  min-width: 48px;
+  min-height: 48px;
   text-decoration: none;
   color: var(--color-text-beige);
+}
+
+.nav-lg span {
+  line-height: 48px;
 }
 
 #jumbotron-wrapper {

@@ -9,9 +9,9 @@ export default class SideNav {
     const nav = document.createElement('nav');
     nav.className = styles.sideNavContainer;
     nav.innerHTML = `
-      <div><a href="/">Home</a></div>
-      <div><a href="/">Favorites</a></div>
-      <div><a href="/">About Us</a></div>
+      <div><a href="/"><span>Home</span></a></div>
+      <div><a href="#"><span>Favorites</span></a></div>
+      <div><a href="https://xlaks.github.io"><span>About Us</span></a></div>
     `
     nav.addEventListener('click', (e) => e.stopPropagation())
     
