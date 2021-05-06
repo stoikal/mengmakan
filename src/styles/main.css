@@ -8,18 +8,31 @@
   --color-4: #484018;
 } */
 
-:root {
-  --color-1: #91091e;
+/* :root {
+  --color-1: #D7263D;
   --color-2: #da723c;
   --color-3: #c39e5c;
   --color-4: #fdf1d6;
+} */
+
+:root {
+  --color-1: #D7263D;
+  --color-2: #2E294E;
+  --color-3: #6DB1BF;
+  --color-4: #FFEAEC;
+  --color-5: #3F6C51;
+}
+
+#header-full {
+  background-color: var(--color-1);
 }
 
 #header {
-  background-color: var(--color-1);
+  margin: 0 auto;
   color: beige;
   display: flex;
   justify-content: space-between;
+  max-width: 1600px;
 }
 
 #header > h1 {
@@ -38,10 +51,29 @@
   display: inline;
 }
 
+#jumbotron-wrapper {
+  position: relative;
+}
+
 #jumbotron-wrapper > img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+#jumbotron-wrapper > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) skew(-10deg);
+  background-color: beige;
+  color: var(--color-2);
+}
+
+footer {
+  text-align: center;
+  background-color: var(--color-2);
+  color: beige;
 }
 
 @media screen and (min-width: 800px) {

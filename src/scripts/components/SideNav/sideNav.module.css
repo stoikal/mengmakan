@@ -2,7 +2,7 @@
   display: block;
 }
 
-.button {
+.container button {
   border: none;
   padding: none;
   border-radius: 50%;
@@ -22,7 +22,7 @@
   width: 100vw;
   height: 100vh;
   transition: all 200ms;
-  background-color: aqua;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .overlay.open {
@@ -30,14 +30,16 @@
 }
 
 .sideNavContainer {
+  --sidenav-width: 400px;
   z-index: 1;
   position: fixed;
-  background-color: green;
+  background-color: #2E294E;
   top: 0;
   right: 0;
-  width: 200px;
+  max-width: 100%;
+  width: var(--sidenav-width);
   height: 100vh;
-  transform: translateX(200px);
+  transform: translateX(var(--sidenav-width));
   transition: transform 200ms;
 }
 
@@ -45,8 +47,22 @@
   transform: translateX(0);
 }
 
+.sideNavContainer a {
+  color: beige;
+  text-decoration: none;
+}
+
+.sideNavContainer > div:first-child {
+  text-align: right;
+}
+
+.sideNavContainer > div:not(:first-child) {
+  min-height: 48px;
+  padding: 8px
+}
+
 @media screen and (min-width: 800px) {
-  .button {
+  #burgerButton {
     display: none;
   }
  }

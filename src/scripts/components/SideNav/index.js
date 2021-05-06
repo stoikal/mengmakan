@@ -27,7 +27,7 @@ export default class SideNav {
 
   _renderButton() {
     const button = document.createElement('button');
-    button.className =styles.button;
+    button.id =styles.burgerButton;
     button.innerHTML = `
       <span>&#9776;</span>
     `
@@ -35,27 +35,36 @@ export default class SideNav {
     return button;
   }
 
+  _createToggler(...elements) {
+    return (event) => {
+      event.stopPropagation();
+
+      elements.forEach((el) => {
+        el.classList.toggle(styles.open)
+      })
+    }
+  }
+
   render() {
     const container = document.createElement('div');
-    const button = this._renderButton();
+    const closeBtnWrapper = document.createElement('div');
+    const closeBtn = document.createElement('button');
+    const burgerBtn = this._renderButton();
     const overlay = this._renderOverlay();
     const nav = this._renderNav();
 
     container.className = styles.container;
+    closeBtnWrapper.className = styles.closeButton;
 
-    button.addEventListener('click', (e) => {
-      e.stopPropagation()
-      overlay.classList.toggle(styles.open)
-      nav.classList.toggle(styles.open)
-    });
+    burgerBtn.addEventListener('click', this._createToggler(overlay, nav));
+    closeBtn.addEventListener('click', this._createToggler(overlay, nav));
+    overlay.addEventListener('click', this._createToggler(overlay, nav));
     
-    overlay.addEventListener('click', (e) => {
-      e.stopPropagation()
-      overlay.classList.toggle(styles.open)
-      nav.classList.toggle(styles.open)
-    });
+    closeBtn.innerText = '✕';
+    closeBtnWrapper.append(closeBtn);
+    nav.prepend(closeBtnWrapper);
 
-    container.append(button);
+    container.append(burgerBtn);
     container.append(overlay);
     container.append(nav);
 

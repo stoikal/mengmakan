@@ -1,4 +1,6 @@
 .listContainer {
+  max-width: 1600px;
+  margin: 0 auto;
   border: 1px dashed greenyellow;
   display: grid;
   grid-template-columns: 1fr;
