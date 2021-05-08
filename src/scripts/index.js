@@ -7,24 +7,24 @@ import Card from './components/RestaurantCard';
 
 class DOM {
   static insert(el, parentEl) {
-    parentEl.append(el)
+    parentEl.append(el);
   }
 }
 
 const sideNav = new SideNav();
 const restaurantList = new ListContainer(
-  data.restaurants, 
-  (item) => {
-    return new Card(item)
-  }
+  data.restaurants,
+  (item) => new Card(item),
 );
 
 DOM.insert(
   restaurantList.render(),
-  document.getElementById('restaurant-list')
-)
+  document.getElementById('restaurant-list'),
+);
 
 DOM.insert(
   sideNav.render(),
-  document.getElementById('navbar-wrapper')
-)
+  document.getElementById('navbar-wrapper'),
+);
+
+console.log('hello');

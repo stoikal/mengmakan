@@ -12,9 +12,9 @@ export default class SideNav {
       <div><a href="/"><span>Home</span></a></div>
       <div><a href="#"><span>Favorites</span></a></div>
       <div><a href="https://xlaks.github.io"><span>About Us</span></a></div>
-    `
-    nav.addEventListener('click', (e) => e.stopPropagation())
-    
+    `;
+    nav.addEventListener('click', (e) => e.stopPropagation());
+
     return nav;
   }
 
@@ -27,10 +27,12 @@ export default class SideNav {
 
   _renderButton() {
     const button = document.createElement('button');
-    button.id =styles.burgerButton;
+    button.type = 'button';
+    button['aria-label'] = 'open menu drawer';
+    button.id = styles.burgerButton;
     button.innerHTML = `
       <span>&#9776;</span>
-    `
+    `;
 
     return button;
   }
@@ -40,9 +42,9 @@ export default class SideNav {
       event.stopPropagation();
 
       elements.forEach((el) => {
-        el.classList.toggle(styles.open)
-      })
-    }
+        el.classList.toggle(styles.open);
+      });
+    };
   }
 
   render() {
@@ -59,7 +61,7 @@ export default class SideNav {
     burgerBtn.addEventListener('click', this._createToggler(overlay, nav));
     closeBtn.addEventListener('click', this._createToggler(overlay, nav));
     overlay.addEventListener('click', this._createToggler(overlay, nav));
-    
+
     closeBtn.innerText = '✕';
     closeBtnWrapper.append(closeBtn);
     nav.prepend(closeBtnWrapper);

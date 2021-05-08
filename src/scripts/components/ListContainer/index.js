@@ -9,14 +9,14 @@ export default class RestaurantList {
   render() {
     const container = document.createElement('div');
     container.className = styles.listContainer;
-    
+
     this.list.forEach((item) => {
       const itemEl = this.renderItem(item);
 
       container.append(
-        itemEl.render()
-      )
-    })
+        itemEl.render(),
+      );
+    });
 
     return container;
   }

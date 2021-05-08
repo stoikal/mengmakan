@@ -1,14 +1,13 @@
 import styles from './card.module.css';
 
 const truncate = (str, maxLength) => {
-  const length = str.length;
-  
+  const { length } = str;
+
   if (length <= maxLength) {
-    return str
-  } else {
-    return str.slice(0, maxLength).trim() + '...'
+    return str;
   }
-}
+  return `${str.slice(0, maxLength).trim()}...`;
+};
 
 export default class RestaurantCard {
   constructor(detail) {
@@ -16,9 +15,9 @@ export default class RestaurantCard {
   }
 
   render() {
-    console.log(styles)
-    // Minimal menampilkan gambar, kota, rating, dan deskripsi
-    const { city, description, id, name, pictureId: imgSrc, rating } = this.restaurant;
+    const {
+      city, description, id, name, pictureId: imgSrc, rating,
+    } = this.restaurant;
     const card = document.createElement('div');
 
     card.className = styles.container;
@@ -33,9 +32,9 @@ export default class RestaurantCard {
         <p><b>${name}</b></p>
         <p>${truncate(description, 150)}</p>
       </div>
-    `
+    `;
     return card;
   }
 }
 
-{/* <img src=${imgSrc} alt="suasana restoran"/> */}
+{ /* <img src=${imgSrc} alt="suasana restoran"/> */ }
