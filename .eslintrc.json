@@ -11,6 +11,9 @@
         "sourceType": "module"
     },
     "rules": {
-      "no-console": "off"
+      "no-underscore-dangle":"off",
+      "class-methods-use-this": "off",
+      "no-console": "warn",
+      "no-unused-vars": "warn"
     }
 }

@@ -1,6 +1,6 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.css';
-import data from '../DATA';
+import data from '../DATA.json';
 import ListContainer from './components/ListContainer';
 import SideNav from './components/SideNav';
 import Card from './components/RestaurantCard';

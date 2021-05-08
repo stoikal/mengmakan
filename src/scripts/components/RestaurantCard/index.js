@@ -16,7 +16,7 @@ export default class RestaurantCard {
 
   render() {
     const {
-      city, description, id, name, pictureId: imgSrc, rating,
+      city, description, name, pictureId: imgSrc, rating,
     } = this.restaurant;
     const card = document.createElement('div');
 
@@ -36,5 +36,3 @@ export default class RestaurantCard {
     return card;
   }
 }
-
-{ /* <img src=${imgSrc} alt="suasana restoran"/> */ }
