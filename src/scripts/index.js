@@ -1,15 +1,13 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.css';
 import data from '../DATA.json';
-import ListContainer from './components/ListContainer';
-import SideNav from './components/SideNav';
-import Card from './components/RestaurantCard';
+import ListContainer from './components/listContainer';
+import SideNav from './components/sideNav';
+import Card from './components/restaurantCard';
 
-class DOM {
-  static insert(el, parentEl) {
-    parentEl.append(el);
-  }
-}
+import Restaurants from './api/restaurants';
+
+// import './webComponents';
 
 const sideNav = new SideNav();
 const restaurantList = new ListContainer(
@@ -17,14 +15,19 @@ const restaurantList = new ListContainer(
   (item) => new Card(item),
 );
 
-DOM.insert(
-  restaurantList.render(),
-  document.getElementById('restaurant-list'),
-);
+document
+  .getElementById('restaurant-list')
+  .append(restaurantList.render());
 
-DOM.insert(
-  sideNav.render(),
-  document.getElementById('navbar-wrapper'),
-);
+document
+  .getElementById('navbar-wrapper')
+  .append(sideNav.render());
 
-console.log('hello');
+(async () => {
+  const restaurants = await Restaurants.postReview({
+    id: "fnfn8mytkpmkfw1e867",
+    name: "John",
+    review: "enak dan tempatnya bagus"
+  });
+  console.log(restaurants);
+})();

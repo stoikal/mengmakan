@@ -10,7 +10,7 @@
     "lint": "eslint ./src --fix"
   },
   "keywords": [],
-  "author": "your_name <your.email@domain.com>",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.10.5",
