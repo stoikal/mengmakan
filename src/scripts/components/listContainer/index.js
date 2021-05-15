@@ -14,7 +14,7 @@ export default class RestaurantList {
       const itemEl = this.renderItem(item);
 
       container.append(
-        itemEl.render(),
+        itemEl,
       );
     });
 

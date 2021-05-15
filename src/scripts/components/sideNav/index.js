@@ -28,7 +28,7 @@ export default class SideNav {
   _renderButton() {
     const button = document.createElement('button');
     button.type = 'button';
-    button['aria-label'] = 'open menu drawer';
+    button.setAttribute('aria-label', 'open menu drawer');
     button.id = styles.burgerButton;
     button.innerHTML = `
       <span>&#9776;</span>

@@ -3,31 +3,25 @@ import '../styles/main.css';
 import data from '../DATA.json';
 import ListContainer from './components/listContainer';
 import SideNav from './components/sideNav';
-import Card from './components/restaurantCard';
+import './components/restaurantCard';
 
+import App from './app';
 import Restaurants from './api/restaurants';
-
-// import './webComponents';
 
 const sideNav = new SideNav();
 const restaurantList = new ListContainer(
   data.restaurants,
-  (item) => new Card(item),
+  (item) => {
+    const el = document.createElement('restaurant-card');
+    el.details = item;
+    return el;
+  },
 );
 
 document
-  .getElementById('restaurant-list')
+  .getElementById('main-content')
   .append(restaurantList.render());
 
 document
   .getElementById('navbar-wrapper')
   .append(sideNav.render());
-
-(async () => {
-  const restaurants = await Restaurants.postReview({
-    id: "fnfn8mytkpmkfw1e867",
-    name: "John",
-    review: "enak dan tempatnya bagus"
-  });
-  console.log(restaurants);
-})();
