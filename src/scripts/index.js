@@ -3,6 +3,7 @@ import '../styles/main.css';
 
 import SideNav from './components/sideNav';
 import './components/restaurantCard';
+import './components/loadingIndicator';
 
 import Router from './routes/router';
 import routes from './routes/routes';

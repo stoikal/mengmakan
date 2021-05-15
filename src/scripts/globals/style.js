@@ -1,4 +1,4 @@
-const COLOR = {
+export const COLOR = {
   MAIN_1: '#D7263D',
   MAIN_2: '#2E294E',
   ACCENT_1: '#6DB1BF',

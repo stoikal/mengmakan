@@ -1,7 +1,6 @@
-import STYLE from '../globals/style';
+import { COLOR } from '../globals/style';
 import CONFIG from '../globals/config';
 
-const { COLOR } = STYLE;
 const { BASE_IMAGE_URL } = CONFIG;
 const template = document.createElement('template');
 
