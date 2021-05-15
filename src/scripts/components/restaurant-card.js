@@ -1,5 +1,6 @@
 import { COLOR } from '../globals/style';
 import CONFIG from '../globals/config';
+import FavoriteRestaurantsIdb from '../data/favorite-restaurants-idb';
 
 const { BASE_IMAGE_URL } = CONFIG;
 const template = document.createElement('template');
@@ -40,7 +41,10 @@ template.innerHTML = `
       top: 0;
       right: 0.2em;
       font-weight: bold;
-      font-size: 2em;
+      font-size: 2.5em;
+      color: grey;
+      width: 48px;
+      height: 48px;
     }
 
     .like-button.liked {
@@ -64,13 +68,18 @@ template.innerHTML = `
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
+    .name {
+      font-weight: bold;
+      color: ${COLOR.TEXT_BLACK}
+    }
   </style>
     
   <div class="container">
     <div class="picture-wrapper">
       <img/>
       <span class="city"></span>
-      <button class="like-button">&hearts;</button>
+      <button class="like-button" aria-label="like">&hearts;</button>
     </div>
     <div class="description-wrapper">
       <span class="rating"></span>
@@ -93,6 +102,9 @@ class RestaurantCard extends HTMLElement {
     this.$name = this._shadowRoot.querySelector('.name');
     this.$link = this._shadowRoot.querySelector('a');
     this.$description = this._shadowRoot.querySelector('.description');
+    this.$likeBtn = this._shadowRoot.querySelector('.like-button');
+
+    this._isLiked = false;
   }
 
   get details() {
@@ -104,11 +116,41 @@ class RestaurantCard extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['details'];
+    return ['details', 'liked'];
   }
 
-  attributeChangedCallback() {
+  attributeChangedCallback(name, prevVal, newVal) {
     this.render();
+  }
+
+  // Dear reviewer, I wonder if this is okay.
+  // or should I move this logic outside of custom component
+  async _toggleLiked() {
+    const { id } = this.details;
+    if (this._isLiked) {
+      await FavoriteRestaurantsIdb.delete(id);
+      this._isLiked = false;
+      this.$likeBtn.classList.remove('liked');
+    } else {
+      await FavoriteRestaurantsIdb.put(this.details);
+      this._isLiked = true;
+      this.$likeBtn.classList.add('liked');
+    }
+  }
+
+  async _initLikeButton() {
+    const { id } = this.details;
+
+    const restaurant = await FavoriteRestaurantsIdb.retrieve(id);
+    this._isLiked = !!restaurant;
+
+    if (this._isLiked) {
+      this.$likeBtn.classList.add('liked');
+    } else {
+      this.$likeBtn.classList.remove('liked');
+    }
+
+    this.$likeBtn.addEventListener('click', this._toggleLiked.bind(this));
   }
 
   render() {
@@ -124,6 +166,8 @@ class RestaurantCard extends HTMLElement {
     this.$name.innerText = name;
     this.$name.href = `/#/detail/${id}`;
     this.$description.innerText = description;
+
+    this._initLikeButton();
   }
 }
 
