@@ -1,9 +1,9 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.css';
 
-import './components/loadingIndicator';
-import './components/restaurantCard';
-import './components/navDrawer';
+import './components/loading-indicator';
+import './components/restaurant-card';
+import './components/navigation-drawer';
 
 import Router from './routes/router';
 import routes from './routes/routes';

@@ -35,6 +35,18 @@ template.innerHTML = `
       color: ${COLOR.TEXT_BEIGE};
     }
     
+    .like-button {
+      position: absolute;
+      top: 0;
+      right: 0.2em;
+      font-weight: bold;
+      font-size: 2em;
+    }
+
+    .like-button.liked {
+      color: red
+    }
+
     .description-wrapper {
       padding: 1em;
     }
@@ -58,6 +70,7 @@ template.innerHTML = `
     <div class="picture-wrapper">
       <img/>
       <span class="city"></span>
+      <button class="like-button">&hearts;</button>
     </div>
     <div class="description-wrapper">
       <span class="rating"></span>
