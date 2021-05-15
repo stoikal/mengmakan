@@ -4,8 +4,8 @@
   display: grid;
   grid-template-columns: 1fr;
   place-items: center;
-  gap: 1.5em;
-  padding: 1.5em;
+  gap: 3em;
+  padding: 2em;
 }
 
 .listContainer > div {

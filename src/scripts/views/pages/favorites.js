@@ -1,5 +1,5 @@
 export default {
   async render() {
-    return '<div>List</div>';
+    return '<div>Favorites</div>';
   },
 };

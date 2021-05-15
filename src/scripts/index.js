@@ -1,18 +1,15 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.css';
 
-import SideNav from './components/sideNav';
-import './components/restaurantCard';
 import './components/loadingIndicator';
+import './components/restaurantCard';
+import './components/navDrawer';
 
 import Router from './routes/router';
 import routes from './routes/routes';
 
-const sideNav = new SideNav();
-
-document
-  .getElementById('navbar-wrapper')
-  .append(sideNav.render());
+const $navbarWrapper = document.getElementById('navbar-wrapper');
+const $navDrawer = document.createElement('navigation-drawer');
 
 const router = new Router(
   document.getElementById('main-content'),
@@ -20,3 +17,11 @@ const router = new Router(
 );
 
 router.init();
+
+$navDrawer.links = {
+  Home: '/',
+  Favorites: '/#/favorites',
+  'About Us': '/about',
+};
+
+$navbarWrapper.append($navDrawer);

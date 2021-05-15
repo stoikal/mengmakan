@@ -7,7 +7,6 @@ const template = document.createElement('template');
 template.innerHTML = `
   <style>
     .container {
-      border-radius: 8px;
       background-color: ${COLOR.TEXT_BEIGE};
       box-shadow: 1px 5px 13px 0px rgba(0,0,0,0.2);
       overflow: hidden;
@@ -38,7 +37,6 @@ template.innerHTML = `
     
     .description-wrapper {
       padding: 1em;
-      height: 10em;
     }
     
     .description-wrapper > span {

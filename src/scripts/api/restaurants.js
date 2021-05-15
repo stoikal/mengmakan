@@ -13,7 +13,7 @@ class Restaurants {
   static async retrieve(id) {
     const response = await fetch(`${BASE_URL}/detail/${id}`);
     const responseJson = await response.json();
-    return responseJson;
+    return responseJson.restaurant;
   }
 
   static async search(query) {
