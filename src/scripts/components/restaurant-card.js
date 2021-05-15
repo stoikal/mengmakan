@@ -119,12 +119,10 @@ class RestaurantCard extends HTMLElement {
     return ['details', 'liked'];
   }
 
-  attributeChangedCallback(name, prevVal, newVal) {
+  attributeChangedCallback() {
     this.render();
   }
 
-  // Dear reviewer, I wonder if this is okay.
-  // or should I move this logic outside of custom component
   async _toggleLiked() {
     const { id } = this.details;
     if (this._isLiked) {

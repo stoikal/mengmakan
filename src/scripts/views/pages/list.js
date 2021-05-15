@@ -1,5 +1,5 @@
-import styles from '../../../styles/listContainer.module.css';
 import Restaurants from '../../data/restaurants';
+import styles from '../../../styles/listContainer.module.css';
 
 export default {
   async render() {
