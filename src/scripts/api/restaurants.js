@@ -2,8 +2,7 @@ import CONFIG from '../globals/config';
 
 const { BASE_URL } = CONFIG;
 
-// docs: https://restaurant-api.dicoding.dev/
-
+// see https://restaurant-api.dicoding.dev/
 class Restaurants {
   static async list() {
     const response = await fetch(`${BASE_URL}/list`);

@@ -1,6 +1,8 @@
 import STYLE from '../globals/style';
+import CONFIG from '../globals/config';
 
 const { COLOR } = STYLE;
+const { BASE_IMAGE_URL } = CONFIG;
 const template = document.createElement('template');
 
 template.innerHTML = `
@@ -101,8 +103,9 @@ class RestaurantCard extends HTMLElement {
 
   render() {
     const {
-      id, pictureId: imgSrc, name, description, city, rating,
+      id, pictureId, name, description, city, rating,
     } = this.details;
+    const imgSrc = `${BASE_IMAGE_URL}/small/${pictureId}`;
 
     this.$image.src = imgSrc;
     this.$image.alt = name;

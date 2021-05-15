@@ -8,7 +8,8 @@ class Router {
     const { hash } = window.location;
     const path = `/${hash && hash.split('/')[1]}`;
 
-    this.$rootEl.innerHTML = await this.routes[path].render();
+    this.$rootEl.innerHTML = '';
+    this.$rootEl.append(await this.routes[path].render());
   }
 
   init() {
