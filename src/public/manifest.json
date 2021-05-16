@@ -4,7 +4,7 @@
   "description": "Restaurant catalogue",
   "start_url": "/index.html",
   "display": "standalone",
-  "theme_color": "#d84315",
+  "theme_color": "#D7263D",
   "icons": [
     {
       "src": "/icons/restaurant72.png",

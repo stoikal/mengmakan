@@ -11,6 +11,7 @@ import './components/tab-content';
 import CONFIG from './globals/config';
 import Router from './routes/router';
 import routes from './routes/routes';
+import swRegister from './utils/sw-register';
 
 const { NAV_LINKS } = CONFIG;
 const $navbarWrapper = document.getElementById('navbar-wrapper');
@@ -34,4 +35,7 @@ Object.entries(NAV_LINKS).forEach(([label, href]) => {
 $mobileNav.links = NAV_LINKS;
 $navbarWrapper.append($mobileNav);
 
-router.init();
+window.addEventListener('load', () => {
+  router.init();
+  swRegister();
+});

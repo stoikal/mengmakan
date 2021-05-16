@@ -36,7 +36,7 @@ template.innerHTML = `
     }
 
     nav {
-      --sidenav-width: 400px;
+      --sidenav-width: 300px;
       z-index: 1;
       position: fixed;
       background-color: ${COLOR.MAIN_2};
