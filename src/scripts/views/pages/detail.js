@@ -41,6 +41,8 @@ export default {
         <span class=${S.rating}>Rating: ${rating}</span>
         <span class=${S.rating}>Kategori: ${categoriesStr}</span>
         <p class=${S.description}>${description}</p>
+        <custom-tabs>
+        </custom-tabs>
       </div>
     `;
   },

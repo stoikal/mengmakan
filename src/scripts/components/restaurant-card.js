@@ -175,6 +175,4 @@ class RestaurantCard extends HTMLElement {
   }
 }
 
-if (!customElements.get('restaurant-card')) {
-  customElements.define('restaurant-card', RestaurantCard);
-}
+customElements.define('restaurant-card', RestaurantCard);
