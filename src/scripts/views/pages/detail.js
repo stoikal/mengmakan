@@ -19,6 +19,32 @@ template.innerHTML = `
 `;
 
 export default {
+  _getMenu(menus) {
+    const { foods, drinks } = menus;
+    return `
+      <span>Makanan</span>
+      <ul>
+        ${foods.map(({ name }) => `<li>${name}</li>`).join('')}
+      </ul>
+      <span>Minuman</span>
+      <ul>
+        ${drinks.map(({ name }) => `<li>${name}</li>`).join('')}
+      </ul>
+    `;
+  },
+
+  _getReviews(reviews) {
+    const reviewFromNewest = reviews.reverse();
+
+    return reviewFromNewest.map(({ name, review, date }) => `
+      <div>
+        <span>${name}</span>
+        <span>${date}</span>
+        <p>${review}</p>
+      </div>
+    `).join('');
+  },
+
   _getTemplate(restaurant) {
     const {
       name, address, city, pictureId, rating, description, categories, menus, customerReviews,
@@ -42,6 +68,12 @@ export default {
         <span class=${S.rating}>Kategori: ${categoriesStr}</span>
         <p class=${S.description}>${description}</p>
         <custom-tabs>
+          <tab-content title="Review">
+            ${this._getReviews(customerReviews)}
+          </tab-content>
+          <tab-content title="Menu">
+            ${this._getMenu(menus)}
+          </tab-content>
         </custom-tabs>
       </div>
     `;
@@ -57,8 +89,6 @@ export default {
     const restaurant = await this._getRestaurant();
     $container.className = S.container;
     $container.innerHTML = this._getTemplate(restaurant);
-
-    console.log(restaurant);
     return $container;
   },
 };

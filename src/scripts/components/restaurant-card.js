@@ -50,7 +50,7 @@ template.innerHTML = `
     }
 
     .like-button:hover {
-      font-size: 2.6em;
+      height: 56px;
     }
 
     .like-button.liked {
