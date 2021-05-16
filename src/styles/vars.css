@@ -6,4 +6,6 @@
   --color-bg: #FFEAEC;
   --color-text-beige: #F5F5DC;
   --color-text-color: #000;
+
+  --width-clamp: 1600px
 }

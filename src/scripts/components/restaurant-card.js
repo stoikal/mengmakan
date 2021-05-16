@@ -37,6 +37,7 @@ template.innerHTML = `
     }
     
     .like-button {
+      border: none;
       position: absolute;
       top: 0;
       right: 0.2em;
@@ -45,10 +46,15 @@ template.innerHTML = `
       color: grey;
       width: 48px;
       height: 48px;
+      cursor: pointer;
+    }
+
+    .like-button:hover {
+      font-size: 2.6em;
     }
 
     .like-button.liked {
-      color: red
+      color: ${COLOR.MAIN_1};
     }
 
     .description-wrapper {
