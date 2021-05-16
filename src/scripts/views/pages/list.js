@@ -7,6 +7,9 @@ export default {
     container.className = styles.listContainer;
 
     const list = await Restaurants.list();
+    const img = document.createElement('img');
+    img.setAttribute('src', 'https://restaurant-api.dicoding.dev/images/small/14');
+    container.append(img)
     list.forEach((item) => {
       const restaurant = document.createElement('restaurant-card');
       restaurant.details = item;

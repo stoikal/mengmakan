@@ -2,22 +2,6 @@ import Restaurants from '../../data/restaurants';
 import CONFIG from '../../globals/config';
 import S from '../../../styles/detail.module.css';
 
-const template = document.createElement('template');
-template.innerHTML = `
-  <h2 class=${S.title}>Nama Restoran</h2>
-  <div class=${S.addressContainer}>
-    <span class=${S.address}>Alamat</span>
-    <span class=${S.city}>Kota</span>
-  </div>
-  <div class=${S.imageContainer}>
-    <img class=${S.imageContainer}/>
-  </div>
-  <div>
-    <span class=${S.rating}>Rating: -</span>
-    <p class=${S.description}>Tidak ada deskripsi</p>
-  </div>
-`;
-
 export default {
   _getMenu(menus) {
     const { foods, drinks } = menus;
@@ -37,7 +21,7 @@ export default {
     const reviewFromNewest = reviews.reverse();
 
     return reviewFromNewest.map(({ name, review, date }) => `
-      <div>
+      <div class=${S.review}>
         <span>${name}</span>
         <span>${date}</span>
         <p>${review}</p>
@@ -55,27 +39,24 @@ export default {
       .join(', ');
 
     return `
-      <h2 class=${S.title}>${name}</h2>
-      <div class=${S.addressContainer}>
-        <span class=${S.address}>${address}</span>
-        <span class=${S.city}>${city}</span>
-      </div>
-      <div class=${S.imageContainer}>
+      <h2>${name}</h2>
+      <div class=${S.restaurantInfo}>
+        <span class=${S.address}>${address}, ${city}</span>
         <img src=${imgSrc} alt=${name}/>
-      </div>
-      <div>
-        <span class=${S.rating}>Rating: ${rating}</span>
-        <span class=${S.rating}>Kategori: ${categoriesStr}</span>
+        <span class=${S.label}>Rating</span>
+        <span class=${S.value}>${rating}</span>
+        <span class=${S.label}>Kategori</span>
+        <span class=${S.value}>${categoriesStr}</span>
         <p class=${S.description}>${description}</p>
-        <custom-tabs>
-          <tab-content title="Review">
-            ${this._getReviews(customerReviews)}
-          </tab-content>
-          <tab-content title="Menu">
-            ${this._getMenu(menus)}
-          </tab-content>
-        </custom-tabs>
       </div>
+      <custom-tabs>
+        <tab-content title="Review">
+          ${this._getReviews(customerReviews)}
+        </tab-content>
+        <tab-content title="Menu">
+          ${this._getMenu(menus)}
+        </tab-content>
+      </custom-tabs>
     `;
   },
 

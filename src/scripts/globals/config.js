@@ -10,5 +10,6 @@ export default {
   DATABASE_NAME: 'FAVORITE_RESTAURANTS_DATABASE',
   DATABASE_VERSION: 1,
   OBJECT_STORE_NAME: 'restaurants',
+  CACHE_NAME: 'Mengmakan-V1',
   NAV_LINKS,
 };

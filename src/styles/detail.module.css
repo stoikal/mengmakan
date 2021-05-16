@@ -1,33 +1,74 @@
 .container {
   max-width: var(--width-clamp);
   margin: 0 auto;
+  padding: 2em;
 }
 
-.title {
-
+h2 {
+  margin-bottom: 0.2em;
 }
 
-.addressContainer {
-
+.restaurantInfo {
+  display: grid;
+  grid-template-columns: auto 1fr auto 2fr;
 }
 
 .address {
-
+  line-height: 2em;
+  grid-column: 1 / span 4;
 }
 
-.city {
-
+.restaurantInfo img {
+  border-radius: 8px;
+  width: 100%;
+  grid-column: 1 / span 4;
 }
 
-.imageContainer {
-  
+.label {
+  font-weight: bold;
+  margin-right: 0.5em;
+  line-height: 2em;
 }
 
-.rating {
-
+.value {
+  line-height: 2em;
 }
 
 .description {
-
+  grid-column: 1 / span 4;
 }
 
+@media screen and (min-width: 600px) {
+  h2 {
+    margin-bottom: 0.5em;
+  }
+
+  .restaurantInfo {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1em;
+  }
+
+  .restaurantInfo img {
+    grid-column: 1 / 2;
+    grid-row: 1 / span 6
+  }
+
+  .address {
+    line-height: 1em;
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+  }
+
+  .label {
+    padding-top: 1em;
+    grid-column: 2 / 3;
+  }
+  
+  .value {
+    grid-column: 2 / 3;
+  }
+  
+  .description {
+    grid-column: 1 / 3;
+  }
+}
