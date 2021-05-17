@@ -1,5 +1,3 @@
-import { COLOR } from '../globals/style';
-
 const template = document.createElement('template');
 
 template.innerHTML = `
@@ -10,9 +8,9 @@ template.innerHTML = `
     }
 
     .loader {
-      border: 0.3em solid ${COLOR.TEXT_BEIGE};
-      border-top: 0.3em solid ${COLOR.MAIN_2};
-      border-bottom: 0.3em solid ${COLOR.MAIN_2};
+      border: 0.3em solid var(--color-text-beige);
+      border-top: 0.3em solid var(--color-main-2);
+      border-bottom: 0.3em solid var(--color-main-2);
       border-radius: 50%;
       width: 2em;
       height: 2em;
@@ -24,14 +22,18 @@ template.innerHTML = `
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-  </style>
-  
-  <div class="wrapper">
+    </style>
+    
+    <div class="wrapper">
     <div class="loader"></div>
-  </div>
-`;
+    </div>
+    `;
 
 class Loader extends HTMLElement {
+  static get observedAttributes() {
+    return ['height'];
+  }
+
   constructor() {
     super();
 
@@ -47,20 +49,10 @@ class Loader extends HTMLElement {
     this.setAttribute('height', value);
   }
 
-  static get observedAttributes() {
-    return ['height'];
-  }
-
   attributeChangedCallback() {
-    this.render();
-  }
-
-  render() {
-    const wrapper = this._shadowRoot.querySelector('.wrapper');
-    wrapper.style.height = this.height;
+    const $wrapper = this._shadowRoot.querySelector('.wrapper');
+    $wrapper.style.height = this.height;
   }
 }
 
-if (!customElements.get('loading-indicator')) {
-  customElements.define('loading-indicator', Loader);
-}
+customElements.define('loading-indicator', Loader);

@@ -1,5 +1,3 @@
-import { COLOR } from '../globals/style';
-
 const template = document.createElement('template');
 
 template.innerHTML = `
@@ -39,7 +37,7 @@ template.innerHTML = `
       --sidenav-width: 300px;
       z-index: 1;
       position: fixed;
-      background-color: ${COLOR.MAIN_2};
+      background-color: var(--color-main-2);
       top: 0;
       right: 0;
       max-width: 100%;
@@ -97,6 +95,10 @@ template.innerHTML = `
 `;
 
 class NavDrawer extends HTMLElement {
+  static get observedAttributes() {
+    return ['links'];
+  }
+
   constructor() {
     super();
 
@@ -107,6 +109,10 @@ class NavDrawer extends HTMLElement {
     this.$overlay = this._shadowRoot.querySelector('.overlay');
     this.$burgerBtn = this._shadowRoot.querySelector('.burger-button');
     this.$closeBtn = this._shadowRoot.querySelector('.close-button');
+
+    this.$burgerBtn.addEventListener('click', this._toggleDrawer.bind(this));
+    this.$overlay.addEventListener('click', this._toggleDrawer.bind(this));
+    this.$closeBtn.addEventListener('click', this._toggleDrawer.bind(this));
   }
 
   get links() {
@@ -115,10 +121,6 @@ class NavDrawer extends HTMLElement {
 
   set links(value) {
     this.setAttribute('links', JSON.stringify(value));
-  }
-
-  static get observedAttributes() {
-    return ['links'];
   }
 
   attributeChangedCallback() {
@@ -131,10 +133,6 @@ class NavDrawer extends HTMLElement {
   }
 
   render() {
-    this.$burgerBtn.addEventListener('click', this._toggleDrawer.bind(this));
-    this.$overlay.addEventListener('click', this._toggleDrawer.bind(this));
-    this.$closeBtn.addEventListener('click', this._toggleDrawer.bind(this));
-
     Object.entries(this.links).forEach(([label, href]) => {
       const linkWrapper = document.createElement('div');
       linkWrapper.innerHTML = `
@@ -146,6 +144,4 @@ class NavDrawer extends HTMLElement {
   }
 }
 
-if (!customElements.get('navigation-drawer')) {
-  customElements.define('navigation-drawer', NavDrawer);
-}
+customElements.define('navigation-drawer', NavDrawer);

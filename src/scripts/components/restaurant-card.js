@@ -1,14 +1,15 @@
-import { COLOR } from '../globals/style';
 import CONFIG from '../globals/config';
 import FavoriteRestaurantsIdb from '../data/favorite-restaurants-idb';
 
 const { BASE_IMAGE_URL } = CONFIG;
 const template = document.createElement('template');
 
+// using global variables defeats the purpose of component modularity
+// what's the solution?
 template.innerHTML = `
   <style>
     .container {
-      background-color: ${COLOR.TEXT_BEIGE};
+      background-color: var(--color-text-beige);
       box-shadow: 1px 5px 13px 0px rgba(0,0,0,0.2);
       overflow: hidden;
       width: 100%;
@@ -32,8 +33,8 @@ template.innerHTML = `
       top: 1em;
       left: 0;
       padding: 0.5em 0.5em 0.5em 1.5em;
-      background-color: ${COLOR.ACCENT_2};
-      color: ${COLOR.TEXT_BEIGE};
+      background-color: var(--color-accent-2);
+      color: var(--color-text-beige);
     }
     
     .like-button {
@@ -54,7 +55,7 @@ template.innerHTML = `
     }
 
     .like-button.liked {
-      color: ${COLOR.MAIN_1};
+      color: var(--color-main-1);
     }
 
     .description-wrapper {
@@ -62,7 +63,7 @@ template.innerHTML = `
     }
     
     .description-wrapper > span {
-      color: ${COLOR.ACCENT_2}
+      color: var(--color-text-beige);
     }
 
     .description {
@@ -77,7 +78,7 @@ template.innerHTML = `
 
     .name {
       font-weight: bold;
-      color: ${COLOR.TEXT_BLACK}
+      color: var(--color-text-black);
     }
   </style>
     
@@ -96,6 +97,10 @@ template.innerHTML = `
 `;
 
 class RestaurantCard extends HTMLElement {
+  static get observedAttributes() {
+    return ['details', 'liked'];
+  }
+
   constructor() {
     super();
 
@@ -110,7 +115,7 @@ class RestaurantCard extends HTMLElement {
     this.$description = this._shadowRoot.querySelector('.description');
     this.$likeBtn = this._shadowRoot.querySelector('.like-button');
 
-    this._isLiked = false;
+    this.liked = false;
   }
 
   get details() {
@@ -121,43 +126,35 @@ class RestaurantCard extends HTMLElement {
     this.setAttribute('details', JSON.stringify(value));
   }
 
-  static get observedAttributes() {
-    return ['details', 'liked'];
+  get liked() {
+    return this.hasAttribute('liked');
   }
 
-  attributeChangedCallback() {
-    this.render();
-  }
-
-  async _toggleLiked() {
-    const { id } = this.details;
-    if (this._isLiked) {
-      await FavoriteRestaurantsIdb.delete(id);
-      this._isLiked = false;
-      this.$likeBtn.classList.remove('liked');
+  set liked(value) {
+    if (value) {
+      this.setAttribute('liked', '');
     } else {
-      await FavoriteRestaurantsIdb.put(this.details);
-      this._isLiked = true;
-      this.$likeBtn.classList.add('liked');
+      this.removeAttribute('liked');
     }
   }
 
-  async _initLikeButton() {
-    const { id } = this.details;
-
-    const restaurant = await FavoriteRestaurantsIdb.retrieve(id);
-    this._isLiked = !!restaurant;
-
-    if (this._isLiked) {
-      this.$likeBtn.classList.add('liked');
-    } else {
-      this.$likeBtn.classList.remove('liked');
-    }
-
-    this.$likeBtn.addEventListener('click', this._toggleLiked.bind(this));
+  connectedCallback() {
+    this.$likeBtn.addEventListener('click', () => {
+      this.dispatchEvent(
+        new CustomEvent('toggleLike'),
+      );
+    });
   }
 
-  render() {
+  attributeChangedCallback(name) {
+    if (name === 'details') {
+      this._populateCard();
+    } else if (name === 'liked') {
+      this._toggleLikeButton(this.hasAttribute('liked'));
+    }
+  }
+
+  _populateCard() {
     const {
       id, pictureId, name, description, city, rating,
     } = this.details;
@@ -170,8 +167,14 @@ class RestaurantCard extends HTMLElement {
     this.$name.innerText = name;
     this.$name.href = `/#/detail/${id}`;
     this.$description.innerText = description;
+  }
 
-    this._initLikeButton();
+  _toggleLikeButton(newVal) {
+    if (newVal) {
+      this.$likeBtn.classList.add('liked');
+    } else {
+      this.$likeBtn.classList.remove('liked');
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 .container {
-  max-width: var(--width-clamp);
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2em;
 }
@@ -19,9 +19,9 @@ h2 {
 }
 
 .restaurantInfo img {
-  border-radius: 8px;
   width: 100%;
   grid-column: 1 / span 4;
+  margin: 1em 0;
 }
 
 .label {
@@ -35,7 +35,29 @@ h2 {
 }
 
 .description {
+  line-height: 1.5em;
   grid-column: 1 / span 4;
+}
+
+.reviewContainer {
+  padding: 1em 0;
+}
+
+.review {
+  padding: 1em 0.5em 0.5em;
+  /* background-color: white; */
+  margin-bottom: 1em;
+  border-bottom: 1px dotted black;
+}
+
+.menuContainer {
+  padding: 1em;
+  line-height: 1.5em;
+}
+
+.menuContainer ul {
+  margin-top: 0.5em;
+  margin-bottom: 2em;
 }
 
 @media screen and (min-width: 600px) {
@@ -50,7 +72,8 @@ h2 {
 
   .restaurantInfo img {
     grid-column: 1 / 2;
-    grid-row: 1 / span 6
+    grid-row: 1 / span 6;
+    margin: 0;
   }
 
   .address {

@@ -1,5 +1,6 @@
 import Restaurants from '../../data/restaurants';
 import styles from '../../../styles/listContainer.module.css';
+import connectFavToggler from '../../utils/connect-favorite-toggler';
 
 export default {
   async render() {
@@ -7,14 +8,12 @@ export default {
     container.className = styles.listContainer;
 
     const list = await Restaurants.list();
-    const img = document.createElement('img');
-    img.setAttribute('src', 'https://restaurant-api.dicoding.dev/images/small/14');
-    container.append(img)
-    list.forEach((item) => {
-      const restaurant = document.createElement('restaurant-card');
-      restaurant.details = item;
+    list.forEach(async (restaurant) => {
+      const $restaurantCard = document.createElement('restaurant-card');
+      await connectFavToggler($restaurantCard, restaurant);
+      $restaurantCard.details = restaurant;
 
-      container.append(restaurant);
+      container.append($restaurantCard);
     });
 
     return container;

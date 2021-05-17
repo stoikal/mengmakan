@@ -1,9 +1,21 @@
-:root {
+/* :root {
   --color-main-1: #D7263D;
   --color-main-2: #2E294E;
   --color-accent-1: #6DB1BF;
   --color-accent-2: #3F6C51;
-  --color-bg: #FFEAEC;
+  --color-bg: #F5F5DC;
+  --color-text-beige: #F5F5DC;
+  --color-text-color: #000000;
+
+  --width-clamp: 1600px
+} */
+
+:root {
+  --color-main-1: #000000;
+  --color-main-2: #575757;
+  --color-accent-1: #414141;
+  --color-accent-2: #303030;
+  --color-bg: #F5F5DC;
   --color-text-beige: #F5F5DC;
   --color-text-color: #000;
 

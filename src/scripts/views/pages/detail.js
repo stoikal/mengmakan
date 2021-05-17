@@ -1,32 +1,39 @@
 import Restaurants from '../../data/restaurants';
+import FavoriteRestaurantsIdb from '../../data/favorite-restaurants-idb';
 import CONFIG from '../../globals/config';
 import S from '../../../styles/detail.module.css';
+import connectFavToggler from '../../utils/connect-favorite-toggler';
 
 export default {
   _getMenu(menus) {
     const { foods, drinks } = menus;
     return `
-      <span>Makanan</span>
-      <ul>
-        ${foods.map(({ name }) => `<li>${name}</li>`).join('')}
-      </ul>
-      <span>Minuman</span>
-      <ul>
-        ${drinks.map(({ name }) => `<li>${name}</li>`).join('')}
-      </ul>
+      <div class=${S.menuContainer}>
+        <span><b>Makanan</b></span>
+        <ul>
+          ${foods.map(({ name }) => `<li>${name}</li>`).join('')}
+        </ul>
+        <span><b>Minuman</b></span>
+        <ul>
+          ${drinks.map(({ name }) => `<li>${name}</li>`).join('')}
+        </ul>
+      </div>
     `;
   },
 
   _getReviews(reviews) {
     const reviewFromNewest = reviews.reverse();
 
-    return reviewFromNewest.map(({ name, review, date }) => `
-      <div class=${S.review}>
-        <span>${name}</span>
-        <span>${date}</span>
-        <p>${review}</p>
+    return `
+      <div class=${S.reviewContainer}>
+        ${reviewFromNewest.map(({ name, review, date }) => `
+          <div class=${S.review}>
+            <span><b>${name}</b> @ ${date} :</span>
+            <p>${review}</p>
+          </div>
+        `).join('')}
       </div>
-    `).join('');
+    `;
   },
 
   _getTemplate(restaurant) {
@@ -49,6 +56,7 @@ export default {
         <span class=${S.value}>${categoriesStr}</span>
         <p class=${S.description}>${description}</p>
       </div>
+      <like-button class="like-button"></like-button>
       <custom-tabs>
         <tab-content title="Review">
           ${this._getReviews(customerReviews)}
@@ -70,6 +78,10 @@ export default {
     const restaurant = await this._getRestaurant();
     $container.className = S.container;
     $container.innerHTML = this._getTemplate(restaurant);
+
+    const $likeButton = $container.querySelector('.like-button');
+    connectFavToggler($likeButton, restaurant);
+
     return $container;
   },
 };

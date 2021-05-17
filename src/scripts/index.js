@@ -7,6 +7,7 @@ import './components/restaurant-card';
 import './components/navigation-drawer';
 import './components/custom-tabs';
 import './components/tab-content';
+import './components/like-button';
 
 import CONFIG from './globals/config';
 import Router from './routes/router';
