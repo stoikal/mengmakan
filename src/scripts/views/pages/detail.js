@@ -47,6 +47,7 @@ export default {
     return `
       <h2>${name}</h2>
       <div class=${S.restaurantInfo}>
+        <span class=${S.addressLabel}>Alamat</span>
         <span class=${S.address}>${address}, ${city}</span>
         <img src=${imgSrc} alt=${name}/>
         <span class=${S.label}>Rating</span>

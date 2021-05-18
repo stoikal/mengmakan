@@ -8,9 +8,9 @@ template.innerHTML = `
     }
 
     .loader {
-      border: 0.3em solid var(--color-text-beige);
-      border-top: 0.3em solid var(--color-main-2);
-      border-bottom: 0.3em solid var(--color-main-2);
+      border: 0.3em solid rgba(0,0,0,0);
+      border-top: 0.3em solid black;
+      border-bottom: 0.3em solid black;
       border-radius: 50%;
       width: 2em;
       height: 2em;

@@ -26,7 +26,7 @@ template.innerHTML = `
       width: 100vw;
       height: 100vh;
       transition: all 200ms;
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(255, 255, 255, 0.4);
     }
     
     .overlay.open {
@@ -37,7 +37,7 @@ template.innerHTML = `
       --sidenav-width: 300px;
       z-index: 1;
       position: fixed;
-      background-color: var(--color-main-2);
+      background-color: black;
       top: 0;
       right: 0;
       max-width: 100%;

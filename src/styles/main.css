@@ -7,16 +7,12 @@ html {
 }
 
 body {
-  background-color: var(--color-bg);
+  background-color: white;
   font-family: 'Roboto Mono', monospace;
 }
 
 a {
   color: inherit;
-}
-
-#header h1 {
-  font-size: 1em;
 }
 
 .skip-link {
@@ -34,7 +30,7 @@ a {
 }
 
 #header-full {
-  background-color: var(--color-main-1);
+  background-color: black;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -75,7 +71,7 @@ a {
   min-width: 48px;
   min-height: 48px;
   text-decoration: none;
-  color: var(--color-text-beige);
+  color: white;
 }
 
 .nav-lg span {
@@ -99,7 +95,7 @@ a {
   left: 50%;
   transform: translate(-50%, -50%) skew(-10deg);
   background-color: beige;
-  color: var(--color-2);
+  color: black;
   font-size: 1.5em;
 }
 
@@ -112,7 +108,7 @@ a {
 
 footer {
   text-align: center;
-  background-color: var(--color-main-2);
+  background-color: black;
   color: beige;
   margin-top: 1em;
   padding-bottom: 2em;

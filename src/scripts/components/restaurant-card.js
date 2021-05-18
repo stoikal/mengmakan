@@ -3,16 +3,14 @@ import CONFIG from '../globals/config';
 const { BASE_IMAGE_URL } = CONFIG;
 const template = document.createElement('template');
 
-// using global variables defeats the purpose of component modularity
-// what's the solution?
 template.innerHTML = `
   <style>
     .container {
-      background-color: #f7f7f7;
-      box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
-      overflow: hidden;
       width: 100%;
+      overflow: hidden;
       border: 4px solid black;
+      background-color: #fff;
+      box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
     }
 
     .picture-wrapper {
@@ -64,7 +62,7 @@ template.innerHTML = `
     }
     
     .description-wrapper > span {
-      color: var(--color-text-black);
+      color: black;
     }
 
     .description {
@@ -79,7 +77,7 @@ template.innerHTML = `
 
     .name {
       font-weight: bold;
-      color: var(--color-text-black);
+      color: black;
     }
   </style>
     

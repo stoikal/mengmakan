@@ -11,7 +11,7 @@ template.innerHTML = `
       cursor: pointer;
       position: fixed;
       bottom: 1em;
-      right: 1em;
+      right: 8vw;
       color: grey;
     }
 
