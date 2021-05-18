@@ -8,9 +8,9 @@ export default {
     container.className = styles.listContainer;
 
     const list = await Restaurants.list();
+
     list.forEach(async (restaurant) => {
-      const $restaurantCard = document.createElement('restaurant-card');
-      await connectFavToggler($restaurantCard, restaurant);
+      const $restaurantCard = await connectFavToggler(document.createElement('restaurant-card'), restaurant);
       $restaurantCard.details = restaurant;
 
       container.append($restaurantCard);

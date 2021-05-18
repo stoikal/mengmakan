@@ -12,6 +12,11 @@
   max-width: 600px;
 }
 
+.listContainer.empty {
+  grid-template-columns: 1fr;
+  height: 25vh;
+}
+
 @media screen and (min-width: 800px) {
   .listContainer {
     grid-template-columns: repeat(2, 1fr);
@@ -22,6 +27,7 @@
   .listContainer {
     grid-template-columns: repeat(3, 1fr);
   }
+
 }
 
 @media screen and (min-width: 1600px) {

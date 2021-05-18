@@ -1,6 +1,19 @@
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
+    button {
+      border-radius: 50%;
+      border: 1px solid black;
+      font-size: 2em;
+      height: 48px;
+      width: 48px;
+      padding: 0;
+      cursor: pointer;
+      position: fixed;
+      bottom: 1em;
+      right: 1em;
+    }
+
     button.liked {
       color: red;
     }

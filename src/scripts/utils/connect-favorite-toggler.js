@@ -18,7 +18,7 @@ const toggleFavorite = async (restaurant, cb) => {
   cb(response);
 };
 
-const connectFavToggler = async (el, restaurant) => {
+const connectFavToggler = async (el, restaurant, callback) => {
   if (await isRestaurantExist(restaurant.id)) {
     el.setAttribute('liked', '');
   } else {
@@ -34,6 +34,7 @@ const connectFavToggler = async (el, restaurant) => {
         } else {
           el.removeAttribute('liked');
         }
+        if (typeof callback === 'function') callback(response);
       },
     );
   });

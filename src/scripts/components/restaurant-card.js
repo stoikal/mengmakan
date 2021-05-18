@@ -1,5 +1,4 @@
 import CONFIG from '../globals/config';
-import FavoriteRestaurantsIdb from '../data/favorite-restaurants-idb';
 
 const { BASE_IMAGE_URL } = CONFIG;
 const template = document.createElement('template');
@@ -63,7 +62,7 @@ template.innerHTML = `
     }
     
     .description-wrapper > span {
-      color: var(--color-text-beige);
+      color: var(--color-text-black);
     }
 
     .description {

@@ -22,7 +22,11 @@ class Router {
     const path = `/${hash && hash.split('/')[1]}`;
 
     this._renderLoadingIndicator();
-    const pageContent = await this.routes[path].render();
+    const pageContent = await this.routes[path].render({
+      renderPage: this._renderPage.bind(this),
+      path,
+      $rootEl: this.$rootEl,
+    });
 
     this._clearChildren();
     this.$rootEl.append(pageContent);

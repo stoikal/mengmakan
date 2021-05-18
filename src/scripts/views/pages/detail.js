@@ -1,5 +1,4 @@
 import Restaurants from '../../data/restaurants';
-import FavoriteRestaurantsIdb from '../../data/favorite-restaurants-idb';
 import CONFIG from '../../globals/config';
 import S from '../../../styles/detail.module.css';
 import connectFavToggler from '../../utils/connect-favorite-toggler';
