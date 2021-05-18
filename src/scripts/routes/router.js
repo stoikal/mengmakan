@@ -1,3 +1,6 @@
+import genericError from '../views/pages/genericError';
+import notFound from '../views/pages/notFound';
+
 class Router {
   constructor(rootEl, routes) {
     this.$rootEl = rootEl;
@@ -20,13 +23,19 @@ class Router {
   async _renderPage() {
     const { hash } = window.location;
     const path = `/${hash && hash.split('/')[1]}`;
+    let pageContent;
 
     this._renderLoadingIndicator();
-    const pageContent = await this.routes[path].render({
-      renderPage: this._renderPage.bind(this),
-      path,
-      $rootEl: this.$rootEl,
-    });
+
+    try {
+      pageContent = await (this.routes[path] || notFound).render({
+        renderPage: this._renderPage.bind(this),
+        path,
+        $rootEl: this.$rootEl,
+      });
+    } catch {
+      pageContent = await genericError.render();
+    }
 
     this._clearChildren();
     this.$rootEl.append(pageContent);

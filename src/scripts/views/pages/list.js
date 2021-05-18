@@ -4,8 +4,8 @@ import connectFavToggler from '../../utils/connect-favorite-toggler';
 
 export default {
   async render() {
-    const container = document.createElement('div');
-    container.className = styles.listContainer;
+    const $container = document.createElement('div');
+    $container.className = styles.listContainer;
 
     const list = await Restaurants.list();
 
@@ -13,9 +13,9 @@ export default {
       const $restaurantCard = await connectFavToggler(document.createElement('restaurant-card'), restaurant);
       $restaurantCard.details = restaurant;
 
-      container.append($restaurantCard);
+      $container.append($restaurantCard);
     });
 
-    return container;
+    return $container;
   },
 };

@@ -8,10 +8,11 @@ const template = document.createElement('template');
 template.innerHTML = `
   <style>
     .container {
-      background-color: var(--color-text-beige);
-      box-shadow: 1px 5px 13px 0px rgba(0,0,0,0.2);
+      background-color: #f7f7f7;
+      box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
       overflow: hidden;
       width: 100%;
+      border: 4px solid black;
     }
 
     .picture-wrapper {
@@ -32,8 +33,8 @@ template.innerHTML = `
       top: 1em;
       left: 0;
       padding: 0.5em 0.5em 0.5em 1.5em;
-      background-color: var(--color-accent-2);
-      color: var(--color-text-beige);
+      background-color: black;
+      color: white;
     }
     
     .like-button {
@@ -41,6 +42,7 @@ template.innerHTML = `
       position: absolute;
       top: 0;
       right: 0.2em;
+      background-color: white;
       font-weight: bold;
       font-size: 2.5em;
       color: grey;
@@ -54,7 +56,7 @@ template.innerHTML = `
     }
 
     .like-button.liked {
-      color: var(--color-main-1);
+      color: red;
     }
 
     .description-wrapper {

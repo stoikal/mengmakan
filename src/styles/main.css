@@ -1,5 +1,6 @@
 @import url('./normalize.css');
 @import url('./vars.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 
 html {
   font-size: 16px;
@@ -7,11 +8,15 @@ html {
 
 body {
   background-color: var(--color-bg);
-  font-family: sans-serif;
+  font-family: 'Roboto Mono', monospace;
 }
 
 a {
   color: inherit;
+}
+
+#header h1 {
+  font-size: 1em;
 }
 
 .skip-link {
@@ -30,6 +35,9 @@ a {
 
 #header-full {
   background-color: var(--color-main-1);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 #header {
@@ -93,6 +101,13 @@ a {
   background-color: beige;
   color: var(--color-2);
   font-size: 1.5em;
+}
+
+.exception-container {
+  display: grid;
+  place-items: center;
+  height: 25vh;
+  padding: 2em;
 }
 
 footer {

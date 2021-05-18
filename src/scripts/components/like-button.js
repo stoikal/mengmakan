@@ -12,6 +12,7 @@ template.innerHTML = `
       position: fixed;
       bottom: 1em;
       right: 1em;
+      color: grey;
     }
 
     button.liked {
