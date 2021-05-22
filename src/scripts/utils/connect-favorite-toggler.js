@@ -19,25 +19,25 @@ const toggleFavorite = async (restaurant, cb) => {
 };
 
 const connectFavToggler = async (el, restaurant, callback) => {
-  // if (await isRestaurantExist(restaurant.id)) {
-  //   el.setAttribute('liked', '');
-  // } else {
-  //   el.removeAttribute('liked');
-  // }
+  if (await isRestaurantExist(restaurant.id)) {
+    el.setAttribute('liked', '');
+  } else {
+    el.removeAttribute('liked');
+  }
 
-  // el.addEventListener('toggleLike', () => {
-  //   toggleFavorite(
-  //     restaurant,
-  //     (response) => {
-  //       if (response) {
-  //         el.setAttribute('liked', '');
-  //       } else {
-  //         el.removeAttribute('liked');
-  //       }
-  //       if (typeof callback === 'function') callback(response);
-  //     },
-  //   );
-  // });
+  el.addEventListener('toggleLike', () => {
+    toggleFavorite(
+      restaurant,
+      (response) => {
+        if (response) {
+          el.setAttribute('liked', '');
+        } else {
+          el.removeAttribute('liked');
+        }
+        if (typeof callback === 'function') callback(response);
+      },
+    );
+  });
 
   return el;
 };

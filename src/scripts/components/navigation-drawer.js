@@ -15,6 +15,7 @@ template.innerHTML = `
       font-size: 1.5em;
       color: white;
       background-color: transparent;
+      cursor: pointer;
     }
   
     .overlay {
@@ -110,6 +111,7 @@ class NavDrawer extends HTMLElement {
     this.$burgerBtn = this._shadowRoot.querySelector('.burger-button');
     this.$closeBtn = this._shadowRoot.querySelector('.close-button');
 
+    // is it better to add listener in the constructor or connectedCallback?
     this.$burgerBtn.addEventListener('click', this._toggleDrawer.bind(this));
     this.$overlay.addEventListener('click', this._toggleDrawer.bind(this));
     this.$closeBtn.addEventListener('click', this._toggleDrawer.bind(this));
@@ -134,12 +136,12 @@ class NavDrawer extends HTMLElement {
 
   render() {
     Object.entries(this.links).forEach(([label, href]) => {
-      const linkWrapper = document.createElement('div');
-      linkWrapper.innerHTML = `
+      const $link = document.createElement('div');
+      $link.innerHTML = `
         <a href=${href}>${label}</a>
       `;
 
-      this.$nav.append(linkWrapper);
+      this.$nav.append($link);
     });
   }
 }

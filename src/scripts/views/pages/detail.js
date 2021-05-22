@@ -23,16 +23,12 @@ export default {
   _getReviews(reviews) {
     const reviewFromNewest = reviews.reverse();
 
-    return `
-      <div class=${S.reviewContainer}>
-        ${reviewFromNewest.map(({ name, review, date }) => `
-          <div class=${S.review}>
-            <span><b>${name}</b> @ ${date} :</span>
-            <p>${review}</p>
-          </div>
-        `).join('')}
+    return reviewFromNewest.map(({ name, review, date }) => `
+      <div class=${S.review}>
+        <span><b>${name}</b> @ ${date} :</span>
+        <p>${review}</p>
       </div>
-    `;
+    `).join('');
   },
 
   _getTemplate(restaurant) {
@@ -59,7 +55,10 @@ export default {
       <like-button class="like-button"></like-button>
       <custom-tabs>
         <tab-content title="Review">
-          ${this._getReviews(customerReviews)}
+          <review-form></review-form>
+          <div class=${S.reviewContainer}>
+            ${this._getReviews(customerReviews)}
+          </div>
         </tab-content>
         <tab-content title="Menu">
           ${this._getMenu(menus)}
@@ -73,6 +72,20 @@ export default {
     return Restaurants.retrieve(id);
   },
 
+  _createSubmitHandler(restaurantId) {
+    return (detail) => {
+      const { name, review } = detail;
+
+      return Restaurants.postReview({ id: restaurantId, name, review })
+        .then((res) => {
+          if (res.customerReviews) {
+            const $reviewContainer = document.querySelector(`.${S.reviewContainer}`);
+            $reviewContainer.innerHTML = this._getReviews(res.customerReviews);
+          }
+        });
+    };
+  },
+
   async render() {
     const $container = document.createElement('div');
     const restaurant = await this._getRestaurant();
@@ -81,6 +94,9 @@ export default {
 
     const $likeButton = $container.querySelector('.like-button');
     connectFavToggler($likeButton, restaurant);
+
+    const $form = $container.querySelector('review-form');
+    $form.onSubmit = this._createSubmitHandler(restaurant.id);
 
     return $container;
   },

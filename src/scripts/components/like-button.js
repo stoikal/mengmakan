@@ -39,11 +39,6 @@ class LikeButton extends HTMLElement {
     this.$button = this._shadowRoot.querySelector('button');
 
     this.liked = false;
-    this.addEventListener('click', () => {
-      this.dispatchEvent(
-        new CustomEvent('toggleLike'),
-      );
-    });
   }
 
   get liked() {
@@ -56,6 +51,14 @@ class LikeButton extends HTMLElement {
     } else {
       this.removeAttribute('liked');
     }
+  }
+
+  connectedCallback() {
+    this.addEventListener('click', () => {
+      this.dispatchEvent(
+        new CustomEvent('toggleLike'),
+      );
+    });
   }
 
   attributeChangedCallback(name) {
