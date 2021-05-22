@@ -1,10 +1,11 @@
 {
   "name": "Mengmakan Restaurant Catalogue",
   "short_name": "Mengmakan",
-  "description": "Restaurant catalogue",
+  "description": "Catalogue of restaurants near you",
   "start_url": "/index.html",
   "display": "standalone",
-  "theme_color": "#D7263D",
+  "theme_color": "#000",
+  "background_color": "#FFF",
   "icons": [
     {
       "src": "/icons/restaurant72.png",

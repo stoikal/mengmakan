@@ -83,7 +83,7 @@ template.innerHTML = `
     
   <div class="container">
     <div class="picture-wrapper">
-      <img/>
+      <img crossorigin="anonymous"/>
       <span class="city"></span>
       <button class="like-button" aria-label="like">&hearts;</button>
     </div>

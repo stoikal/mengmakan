@@ -1,7 +1,7 @@
 const NAV_LINKS = {
   Home: '/#/',
   Favorites: '/#/favorites',
-  'About Us': '/#/about',
+  'About Us': 'https://gitlab.com/xlwpa',
 };
 
 export default {
