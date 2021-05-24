@@ -37,7 +37,5 @@ Object.entries(NAV_LINKS).forEach(([label, href]) => {
 $mobileNav.links = NAV_LINKS;
 $navbarWrapper.append($mobileNav);
 
-window.addEventListener('load', () => {
-  router.init();
-  swRegister();
-});
+router.init();
+swRegister();
