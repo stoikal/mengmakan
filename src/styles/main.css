@@ -118,6 +118,12 @@ footer span {
   line-height: 3em;
 }
 
+footer a {
+  display: inline-block;
+  height: 3em;
+  line-height: 3em;
+}
+
 @media screen and (min-width: 800px) {
   .nav-lg {
     display: block;

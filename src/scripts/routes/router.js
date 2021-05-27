@@ -25,6 +25,9 @@ class Router {
     const path = `/${hash && hash.split('/')[1]}`;
     let pageContent;
 
+    // ignore skip to main content navigation
+    if(hash === '#main-content') return;
+
     this._renderLoadingIndicator();
 
     try {

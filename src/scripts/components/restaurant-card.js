@@ -5,6 +5,11 @@ const template = document.createElement('template');
 
 template.innerHTML = `
   <style>
+    a {
+      display: inline-block;
+      min-height: 48px;
+    }
+
     .container {
       width: 100%;
       overflow: hidden;
@@ -78,6 +83,7 @@ template.innerHTML = `
     .name {
       font-weight: bold;
       color: black;
+      line-height: 48px;
     }
   </style>
     

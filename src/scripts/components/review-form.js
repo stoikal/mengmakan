@@ -1,13 +1,15 @@
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
+
     form {
       padding: 1em 0.5em;
     }
 
     input {
       margin-bottom: 0.5em;
-      line-height: 1.5em;
+      line-height: 2em;
+      font-size: 1em;
     }
 
     textarea {
@@ -15,6 +17,13 @@ template.innerHTML = `
       width: 100%;
       max-width: 600px;
       line-height: 1.5em;
+      font-size: 1em;
+    }
+
+    button {
+      min-height: 48px;
+      min-width: 48px;
+      padding: 1em;
     }
 
   </style>
