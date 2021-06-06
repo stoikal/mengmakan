@@ -1,9 +1,3 @@
-const NAV_LINKS = {
-  Home: '/#/',
-  Favorites: '/#/favorites',
-  'About Us': 'https://gitlab.com/xlwpa',
-};
-
 export default {
   BASE_URL: 'https://restaurant-api.dicoding.dev',
   BASE_IMAGE_URL: 'https://restaurant-api.dicoding.dev/images',
@@ -11,5 +5,9 @@ export default {
   DATABASE_VERSION: 1,
   OBJECT_STORE_NAME: 'restaurants',
   CACHE_NAME: 'Mengmakan-V1',
-  NAV_LINKS,
+  NAV_LINKS: {
+    Home: '/#/',
+    Favorites: '/#/favorites',
+    'About Us': 'https://github.com/xlaks',
+  }
 };
