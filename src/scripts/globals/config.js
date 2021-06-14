@@ -9,5 +9,5 @@ export default {
     Home: '/#/',
     Favorites: '/#/favorites',
     'About Us': 'https://github.com/xlaks',
-  }
+  },
 };
