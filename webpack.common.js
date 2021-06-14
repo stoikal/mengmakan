@@ -41,6 +41,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/templates/index.html'),
       filename: 'index.html',
@@ -50,6 +51,9 @@ module.exports = {
         {
           from: path.resolve(__dirname, 'src/public/'),
           to: path.resolve(__dirname, 'dist/'),
+          globOptions: {
+            ignore: ['**/public/images/**'], // files inside public/images are handled by sharp (npm run build-images)
+          },
         },
       ],
     }),
@@ -64,6 +68,5 @@ module.exports = {
     new ServiceWorkerWebpackPlugin({
       entry: path.resolve(__dirname, 'src/scripts/sw.js'),
     }),
-    new CleanWebpackPlugin(),
   ],
 };

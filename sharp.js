@@ -8,7 +8,7 @@ const destination = path.resolve(__dirname, 'dist/images');
 
 const makeDir = (dir) => {
   if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir);
+    fs.mkdirSync(dir, { recursive: true });
   }
 };
 
