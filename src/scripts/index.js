@@ -19,9 +19,10 @@ const { NAV_LINKS } = CONFIG;
 const $navbarWrapper = document.getElementById('navbar-wrapper');
 const $desktopNav = document.querySelector('.desktop-nav');
 const $mobileNav = document.createElement('navigation-drawer');
+const $routerRootEl = document.getElementById('main-content');
 
 const router = new Router(
-  document.getElementById('main-content'),
+  $routerRootEl,
   routes,
 );
 

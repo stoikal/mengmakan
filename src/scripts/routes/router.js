@@ -14,34 +14,34 @@ class Router {
   }
 
   _renderLoadingIndicator() {
-    const loader = document.createElement('loading-indicator');
-    loader.height = '40vh';
+    const $loader = document.createElement('loading-indicator');
+    $loader.height = '40vh';
     this._clearChildren();
-    this.$rootEl.append(loader);
+    this.$rootEl.append($loader);
   }
 
   async _renderPage() {
     const { hash } = window.location;
     const path = `/${hash && hash.split('/')[1]}`;
-    let pageContent;
+    let $pageContent;
 
     // ignore skip to main content navigation
-    if(hash === '#main-content') return;
+    if (hash === '#main-content') return;
 
     this._renderLoadingIndicator();
 
     try {
-      pageContent = await (this.routes[path] || notFound).render({
+      $pageContent = await (this.routes[path] || notFound).render({
         renderPage: this._renderPage.bind(this),
         path,
         $rootEl: this.$rootEl,
       });
     } catch {
-      pageContent = await genericError.render();
+      $pageContent = await genericError.render();
     }
 
     this._clearChildren();
-    this.$rootEl.append(pageContent);
+    this.$rootEl.append($pageContent);
   }
 
   init() {
