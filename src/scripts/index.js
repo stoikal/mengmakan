@@ -1,12 +1,10 @@
 import 'regenerator-runtime'; /* for async await transpile */
-import 'lazysizes';
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
-import '@dannymoerkerke/lazy-img';
+import './components/lazy-img';
 import './components/loading-indicator';
 import './components/restaurant-card';
 import './components/navigation-drawer';
-import './components/custom-tabs';
+import './components/tabs-container';
 import './components/tab-content';
 import './components/like-button';
 import './components/review-form';

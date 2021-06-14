@@ -81,6 +81,7 @@ a {
 #jumbotron-wrapper {
   position: relative;
   overflow: hidden;
+  height: 16em;
 }
 
 #jumbotron-wrapper > picture {

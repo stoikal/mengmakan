@@ -53,7 +53,7 @@ export default {
         <p class=${S.description}>${description}</p>
       </div>
       <like-button class="like-button"></like-button>
-      <custom-tabs>
+      <tabs-container>
         <tab-content title="Review">
           <review-form></review-form>
           <div class=${S.reviewContainer}>
@@ -63,7 +63,7 @@ export default {
         <tab-content title="Menu">
           ${this._getMenu(menus)}
         </tab-content>
-      </custom-tabs>
+      </tabs-container>
     `;
   },
 
