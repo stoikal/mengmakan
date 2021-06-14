@@ -1,7 +1,8 @@
 import 'regenerator-runtime'; /* for async await transpile */
-import '../styles/main.css';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
-/** define custom component; where should i put this? */
+import '@dannymoerkerke/lazy-img';
 import './components/loading-indicator';
 import './components/restaurant-card';
 import './components/navigation-drawer';
@@ -9,6 +10,8 @@ import './components/custom-tabs';
 import './components/tab-content';
 import './components/like-button';
 import './components/review-form';
+
+import '../styles/main.css';
 
 import CONFIG from './globals/config';
 import Router from './routes/router';
@@ -29,7 +32,7 @@ const router = new Router(
 Object.entries(NAV_LINKS).forEach(([label, href]) => {
   const li = document.createElement('li');
   li.innerHTML = `
-  <a href=${href}><span>${label}</span></a>
+    <a href=${href}><span>${label}</span></a>
   `;
 
   $desktopNav.append(li);

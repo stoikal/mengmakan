@@ -24,7 +24,7 @@ template.innerHTML = `
       height: 10em;
     }
     
-    .picture-wrapper > img {
+    .picture-wrapper > lazy-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -89,7 +89,7 @@ template.innerHTML = `
     
   <div class="container">
     <div class="picture-wrapper">
-      <img crossorigin="anonymous"/>
+      <lazy-img crossorigin="anonymous"></lazy-img>
       <span class="city"></span>
       <button class="like-button" aria-label="like">&hearts;</button>
     </div>
@@ -112,7 +112,7 @@ class RestaurantCard extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: 'open' });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this.$image = this._shadowRoot.querySelector('img');
+    this.$image = this._shadowRoot.querySelector('lazy-img');
     this.$city = this._shadowRoot.querySelector('.city');
     this.$rating = this._shadowRoot.querySelector('.rating');
     this.$name = this._shadowRoot.querySelector('.name');
@@ -165,8 +165,9 @@ class RestaurantCard extends HTMLElement {
     } = this.details;
     const imgSrc = `${BASE_IMAGE_URL}/small/${pictureId}`;
 
-    this.$image.src = imgSrc;
-    this.$image.alt = name;
+    this.$image.setAttribute('src', imgSrc);
+    this.$image.setAttribute('alt', name);
+    this.$image.classList.add('lazyload');
     this.$city.innerText = city;
     this.$rating.innerText = `Rating: ${rating}`;
     this.$name.innerText = name;
