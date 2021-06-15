@@ -1,13 +1,13 @@
 import Restaurants from '../../data/restaurants';
 import CONFIG from '../../globals/config';
-import S from '../../../styles/detail.module.css';
+import styles from '../../../styles/detail.module.css';
 import connectFavToggler from '../../utils/connect-favorite-toggler';
 
 export default {
   _getMenu(menus) {
     const { foods, drinks } = menus;
     return `
-      <div class=${S.menuContainer}>
+      <div class=${styles.menuContainer}>
         <span><b>Makanan</b></span>
         <ul>
           ${foods.map(({ name }) => `<li>${name}</li>`).join('')}
@@ -24,7 +24,7 @@ export default {
     const reviewFromNewest = reviews.reverse();
 
     return reviewFromNewest.map(({ name, review, date }) => `
-      <div class=${S.review}>
+      <div class=${styles.review}>
         <span><b>${name}</b> @ ${date} :</span>
         <p>${review}</p>
       </div>
@@ -42,21 +42,21 @@ export default {
 
     return `
       <h2>${name}</h2>
-      <div class=${S.restaurantInfo}>
-        <span class=${S.addressLabel}>Alamat</span>
-        <span class=${S.address}>${address}, ${city}</span>
+      <div class=${styles.restaurantInfo}>
+        <span class=${styles.addressLabel}>Alamat</span>
+        <span class=${styles.address}>${address}, ${city}</span>
         <img src=${imgSrc} alt=${name}/>
-        <span class=${S.label}>Rating</span>
-        <span class=${S.value}>${rating}</span>
-        <span class=${S.label}>Kategori</span>
-        <span class=${S.value}>${categoriesStr}</span>
-        <p class=${S.description}>${description}</p>
+        <span class=${styles.label}>Rating</span>
+        <span class=${styles.value}>${rating}</span>
+        <span class=${styles.label}>Kategori</span>
+        <span class=${styles.value}>${categoriesStr}</span>
+        <p class=${styles.description}>${description}</p>
       </div>
       <like-button class="like-button"></like-button>
       <tabs-container>
         <tab-content title="Review">
           <review-form></review-form>
-          <div class=${S.reviewContainer}>
+          <div class=${styles.reviewContainer}>
             ${this._getReviews(customerReviews)}
           </div>
         </tab-content>
@@ -79,7 +79,7 @@ export default {
       return Restaurants.postReview({ id: restaurantId, name, review })
         .then((res) => {
           if (res.customerReviews) {
-            const $reviewContainer = document.querySelector(`.${S.reviewContainer}`);
+            const $reviewContainer = document.querySelector(`.${styles.reviewContainer}`);
             $reviewContainer.innerHTML = this._getReviews(res.customerReviews);
           }
         });
@@ -89,11 +89,11 @@ export default {
   async render() {
     const $container = document.createElement('div');
     const restaurant = await this._getRestaurant();
-    $container.className = S.container;
+    $container.className = styles.container;
     $container.innerHTML = this._getTemplate(restaurant);
 
     const $likeButton = $container.querySelector('.like-button');
-    connectFavToggler($likeButton, restaurant);
+    connectFavToggler({$likeButton, restaurant});
 
     const $form = $container.querySelector('review-form');
     $form.onSubmit = this._createSubmitHandler(restaurant.id);
