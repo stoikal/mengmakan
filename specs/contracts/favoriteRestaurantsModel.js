@@ -13,6 +13,17 @@ export const itActsAsFavoriteRestaurantsModel = (FavRestaurants) => {
       .toBeFalsy();
   });
 
+  it('should be able to list all restaurants', async () => {
+    FavRestaurants.put({ id: 1 });
+    FavRestaurants.put({ id: 2 });
+
+    expect(await FavRestaurants.list())
+      .toEqual([
+        { id: 1 },
+        { id: 2 },
+      ]);
+  });
+
   // restaurant object has to have an id property
   it('should not allow adding restaurant without correct properties', async () => {
     FavRestaurants.put({ name: 'Good Restaurant' });
