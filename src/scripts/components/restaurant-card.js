@@ -5,6 +5,10 @@ const template = document.createElement('template');
 
 template.innerHTML = `
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     a {
       display: inline-block;
       min-height: 48px;
@@ -27,7 +31,6 @@ template.innerHTML = `
     .picture-wrapper > lazy-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
     }
     
     .picture-wrapper > span {

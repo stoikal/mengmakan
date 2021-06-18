@@ -16,20 +16,27 @@ export default class LazyImg extends HTMLElement {
             --placeholder-background: #cccccc;
             --spinner-color: #808080;
           }
+          * {
+            box-sizing: border-box;
+          }
+
           #container {
             width: 100%;
             height: 100%;
+            position: relative; 
             background: var(--placeholder-background);
           }
           #image {
-            visibility: hidden;
-            opacity: 0;
+            visibility: visible;
+            opacity: 1;
             width: 0;
             height: 0;
             transition: opacity 0.3s ease-out;
+            object-fit: cover;
           }
           #image.loaded {
-          visibility: visible;
+            z-index: 1;
+            visibility: visible;
             opacity: 1;
             width: 100%;
             height: 100%;
@@ -40,6 +47,9 @@ export default class LazyImg extends HTMLElement {
             display: flex;
             justify-content: center;
             align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
           }
           #spinner {
             box-sizing: border-box;
@@ -90,7 +100,7 @@ export default class LazyImg extends HTMLElement {
     this.options = {
       root: null,
       rootMargin: '0px',
-      threshold: [0.0, 1.0],
+      threshold: [0, 0.99],
     };
 
     this.delay = 500;
@@ -160,7 +170,7 @@ export default class LazyImg extends HTMLElement {
           clearTimeout(this.timer);
           this.timer = null;
         }
-      } else if (intersectionRatio === 1) {
+      } else if (intersectionRatio >= 0.99) {
         this.timer = setTimeout(this.loadImage.bind(this), this.delay);
       }
     });
