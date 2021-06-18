@@ -21,9 +21,11 @@ template.innerHTML = `
 
   </style>
 
-  <button>
-    <span>&hearts;</span>
-  </button>
+  <div>
+    <button>
+      <span>&hearts;</span>
+    </button>
+  </div>
 `;
 
 class LikeButton extends HTMLElement {
@@ -36,6 +38,7 @@ class LikeButton extends HTMLElement {
 
     this._shadowRoot = this.attachShadow({ mode: 'open' });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
+
     this.$button = this._shadowRoot.querySelector('button');
 
     this.liked = false;
@@ -54,9 +57,11 @@ class LikeButton extends HTMLElement {
   }
 
   connectedCallback() {
-    this.addEventListener('click', () => {
+    this.$button.addEventListener('click', () => {
+      const eventName = this.liked ? 'unlike' : 'like';
+
       this.dispatchEvent(
-        new CustomEvent('toggleLike'),
+        new CustomEvent(eventName),
       );
     });
   }

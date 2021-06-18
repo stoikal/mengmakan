@@ -1,6 +1,6 @@
 import FavoriteRestaurants from '../../data/favorite-restaurants-idb';
 import styles from '../../../styles/listContainer.module.css';
-import connectFavToggler from '../../utils/connect-favorite-toggler';
+import FavoriteRestaurantToggler from '../../utils/favorite-restaurant-toggler';
 
 export default {
   async render({ renderPage: rerender }) {
@@ -11,12 +11,15 @@ export default {
 
     if (list.length) {
       list.forEach(async (restaurant) => {
-        const $restaurantCard = await connectFavToggler(
-          document.createElement('restaurant-card'),
-          restaurant,
-          rerender,
-        );
+        const $restaurantCard = document.createElement('restaurant-card');
         $restaurantCard.details = restaurant;
+        const favRestaurantToggler = new FavoriteRestaurantToggler({
+          trigger: $restaurantCard,
+          favoriteRestaurants: FavoriteRestaurants,
+          restaurant,
+          onToggle: rerender,
+        });
+        favRestaurantToggler.init();
 
         $container.append($restaurantCard);
       });

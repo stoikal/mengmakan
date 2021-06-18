@@ -145,8 +145,10 @@ class RestaurantCard extends HTMLElement {
 
   connectedCallback() {
     this.$likeBtn.addEventListener('click', () => {
+      const eventName = this.liked ? 'unlike' : 'like';
+
       this.dispatchEvent(
-        new CustomEvent('toggleLike'),
+        new CustomEvent(eventName),
       );
     });
   }
@@ -155,7 +157,8 @@ class RestaurantCard extends HTMLElement {
     if (name === 'details') {
       this._populateCard();
     } else if (name === 'liked') {
-      this._toggleLikeButton(this.hasAttribute('liked'));
+      const isLiked = this.hasAttribute('liked');
+      this._toggleLikeButton(isLiked);
     }
   }
 

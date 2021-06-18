@@ -1,7 +1,8 @@
 import Restaurants from '../../data/restaurants';
 import CONFIG from '../../globals/config';
 import styles from '../../../styles/detail.module.css';
-import connectFavToggler from '../../utils/connect-favorite-toggler';
+import FavoriteRestaurantToggler from '../../utils/favorite-restaurant-toggler';
+import FavoriteRestaurantsIdb from '../../data/favorite-restaurants-idb';
 
 export default {
   _getMenu(menus) {
@@ -52,7 +53,6 @@ export default {
         <span class=${styles.value}>${categoriesStr}</span>
         <p class=${styles.description}>${description}</p>
       </div>
-      <like-button class="like-button"></like-button>
       <tabs-container>
         <tab-content title="Review">
           <review-form></review-form>
@@ -92,8 +92,15 @@ export default {
     $container.className = styles.container;
     $container.innerHTML = this._getTemplate(restaurant);
 
-    const $likeButton = $container.querySelector('.like-button');
-    connectFavToggler({$likeButton, restaurant});
+    const $likeButton = document.createElement('like-button');
+    const favRestaurantToggler = new FavoriteRestaurantToggler({
+      trigger: $likeButton,
+      favoriteRestaurants: FavoriteRestaurantsIdb,
+      restaurant,
+    });
+    favRestaurantToggler.init();
+
+    $container.append($likeButton);
 
     const $form = $container.querySelector('review-form');
     $form.onSubmit = this._createSubmitHandler(restaurant.id);

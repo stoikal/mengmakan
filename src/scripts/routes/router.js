@@ -36,7 +36,9 @@ class Router {
         path,
         $rootEl: this.$rootEl,
       });
-    } catch {
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error(e);
       $pageContent = await genericError.render();
     }
 
