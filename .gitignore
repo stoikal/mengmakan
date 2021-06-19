@@ -1,2 +1,7 @@
 node_modules
+
+# build directory
 dist/
+
+# output from e2e test 
+# e2e/outputs
