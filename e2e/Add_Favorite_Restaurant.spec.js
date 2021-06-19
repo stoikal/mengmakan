@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const assert = require('assert');
 
-Feature('Liking Movies');
+Feature('Adding Favorite Restaurant');
 
 Before(({ I }) => {
   I.amOnPage('/#/favorites');
