@@ -18,8 +18,8 @@ Scenario('adding a restaurant to favorites', async ({ I }) => {
   I.seeElement('restaurant-card');
 
   // grab the name of first restaurant && click the link
-  const restaurantName = await I.grabTextFrom('pierce/p a.name'); // pierce is puppeteer selector feature to access shadow DOM
-  I.click('pierce/p a.name');
+  const restaurantName = await I.grabTextFrom('pierce/.description-wrapper a.name'); // pierce is puppeteer selector feature to access shadow DOM
+  I.click('pierce/.description-wrapper a.name');
 
   I.seeElement('like-button');
   I.click('pierce/#like-button');
@@ -27,7 +27,7 @@ Scenario('adding a restaurant to favorites', async ({ I }) => {
   I.amOnPage('/#/favorites');
   I.seeElement('restaurant-card');
 
-  const likedRestaurant = await I.grabTextFrom('pierce/p a.name');
+  const likedRestaurant = await I.grabTextFrom('pierce/.description-wrapper a.name');
 
   assert.strictEqual(likedRestaurant, restaurantName);
 });

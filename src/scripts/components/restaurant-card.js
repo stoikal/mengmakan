@@ -16,6 +16,7 @@ template.innerHTML = `
 
     .container {
       width: 100%;
+      min-width: 200px;
       overflow: hidden;
       border: 4px solid black;
       background-color: #fff;

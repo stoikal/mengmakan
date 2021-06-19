@@ -1,18 +1,13 @@
+import { openDB } from 'idb';
 import CONFIG from '../globals/config';
 
 const { DATABASE_NAME, DATABASE_VERSION, OBJECT_STORE_NAME } = CONFIG;
-let dbPromise;
 
-import(/* webpackPrefetch: true */ 'idb')
-  .then((idb) => {
-    const { openDB } = idb;
-
-    dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
-      upgrade(database) {
-        database.createObjectStore(OBJECT_STORE_NAME, { keyPath: 'id' });
-      },
-    });
-  });
+const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
+  upgrade(database) {
+    database.createObjectStore(OBJECT_STORE_NAME, { keyPath: 'id' });
+  },
+});
 
 const FavoriteRestaurantsIdb = {
   async retrieve(id) {
