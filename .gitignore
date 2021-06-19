@@ -4,4 +4,4 @@ node_modules
 dist/
 
 # output from e2e test 
-# e2e/outputs
+e2e/outputs
