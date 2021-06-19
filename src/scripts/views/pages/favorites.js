@@ -19,7 +19,7 @@ export default {
           restaurant,
           onToggle: rerender,
         });
-        favRestaurantToggler.init();
+        await favRestaurantToggler.init();
 
         $container.append($restaurantCard);
       });

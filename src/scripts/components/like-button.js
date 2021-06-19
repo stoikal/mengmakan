@@ -21,7 +21,7 @@ template.innerHTML = `
 
   </style>
 
-  <button>
+  <button id="like-button">
     <span>&hearts;</span>
   </button>
 `;

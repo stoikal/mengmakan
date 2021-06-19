@@ -18,7 +18,7 @@ export default {
         favoriteRestaurants: FavoriteRestaurantsIdb,
         restaurant,
       });
-      favRestaurantToggler.init();
+      await favRestaurantToggler.init();
 
       $container.append($restaurantCard);
     });

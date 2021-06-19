@@ -1,0 +1,17 @@
+
+
+<<< Recorded commands on Sat Jun 19 2021 17:23:55 GMT+0700 (Western Indonesia Time)
+I.seeElement('restaurant-card')
+I.click('restaurant-card', 'main')
+
+<<< Recorded commands on Sat Jun 19 2021 18:06:22 GMT+0700 (Western Indonesia Time)
+I.click({ css: 'restaurant-card' })
+
+<<< Recorded commands on Sat Jun 19 2021 19:23:27 GMT+0700 (Western Indonesia Time)
+I.click('restaurant-card')
+
+<<< Recorded commands on Sat Jun 19 2021 19:51:53 GMT+0700 (Western Indonesia Time)
+I.see('Melting Pot')
+I.see('p')
+I.seeElement('tabs-container')
+I.seeElement('like-button')
