@@ -21,11 +21,9 @@ template.innerHTML = `
 
   </style>
 
-  <div>
-    <button>
-      <span>&hearts;</span>
-    </button>
-  </div>
+  <button>
+    <span>&hearts;</span>
+  </button>
 `;
 
 class LikeButton extends HTMLElement {
