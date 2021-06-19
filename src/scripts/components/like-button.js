@@ -40,6 +40,13 @@ class LikeButton extends HTMLElement {
     this._shadowRoot.appendChild(template.content.cloneNode(true));
 
     this.$button = this._shadowRoot.querySelector('button');
+    this.$button.addEventListener('click', () => {
+      const eventName = this.liked ? 'unlike' : 'like';
+
+      this.dispatchEvent(
+        new CustomEvent(eventName),
+      );
+    });
 
     this.liked = false;
   }
@@ -56,14 +63,8 @@ class LikeButton extends HTMLElement {
     }
   }
 
-  connectedCallback() {
-    this.$button.addEventListener('click', () => {
-      const eventName = this.liked ? 'unlike' : 'like';
-
-      this.dispatchEvent(
-        new CustomEvent(eventName),
-      );
-    });
+  get button() {
+    return this.$button;
   }
 
   attributeChangedCallback(name) {

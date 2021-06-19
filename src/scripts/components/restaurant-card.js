@@ -122,6 +122,13 @@ class RestaurantCard extends HTMLElement {
     this.$link = this._shadowRoot.querySelector('a');
     this.$description = this._shadowRoot.querySelector('.description');
     this.$likeBtn = this._shadowRoot.querySelector('.like-button');
+    this.$likeBtn.addEventListener('click', () => {
+      const eventName = this.liked ? 'unlike' : 'like';
+
+      this.dispatchEvent(
+        new CustomEvent(eventName),
+      );
+    });
 
     this.liked = false;
   }
@@ -146,14 +153,8 @@ class RestaurantCard extends HTMLElement {
     }
   }
 
-  connectedCallback() {
-    this.$likeBtn.addEventListener('click', () => {
-      const eventName = this.liked ? 'unlike' : 'like';
-
-      this.dispatchEvent(
-        new CustomEvent(eventName),
-      );
-    });
+  get button() {
+    return this.$likeBtn;
   }
 
   attributeChangedCallback(name) {
