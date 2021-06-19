@@ -4,10 +4,10 @@ Feature('Submitting Restaurant Review');
 Before(({ I }) => {
   I.amOnPage('/');
   I.seeElement('restaurant-card');
-  pause();
-  // I.click('pierce/.description-wrapper a');
+
+  I.click('pierce/.description-wrapper a');
 });
 
-Scenario('showing review form', ({ I }) => {
-  // I.seeElement();
+Scenario.only('showing review form', ({ I }) => {
+  I.seeElement('review-form');
 });
