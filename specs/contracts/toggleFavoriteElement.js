@@ -29,7 +29,7 @@ export const itActsAsToggleFavoriteElement = (element) => {
 
     element.button.click();
 
-    expect(onUnLikeCb).toHaveBeenCalled();
+    expect(onUnLikeCb).toHaveBeenCalledTimes(1);
   });
 
   it('should not invoke "like" event if its button is clicked when it has "liked" attribute', () => {
