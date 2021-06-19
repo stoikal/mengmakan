@@ -1,13 +1,13 @@
 import 'regenerator-runtime'; /* for async await transpile */
 
-import './components/lazy-img';
-import './components/loading-indicator';
-import './components/restaurant-card';
-import './components/navigation-drawer';
-import './components/tabs-container';
-import './components/tab-content';
-import './components/like-button';
-import './components/review-form';
+// import './components/lazy-img';
+// import './components/loading-indicator';
+// import './components/restaurant-card';
+// import './components/navigation-drawer';
+// import './components/tabs-container';
+// import './components/tab-content';
+// import './components/like-button';
+// import './components/review-form';
 
 import '../styles/main.css';
 
@@ -15,6 +15,9 @@ import CONFIG from './globals/config';
 import Router from './routes/router';
 import routes from './routes/routes';
 import swRegister from './utils/sw-register';
+
+// defines custom elements
+import(/* webpackPrefetch: true */ './components');
 
 const { NAV_LINKS } = CONFIG;
 const $navbarWrapper = document.getElementById('navbar-wrapper');
