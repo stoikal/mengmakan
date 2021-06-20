@@ -35,9 +35,23 @@ Scenario('submitting new review', async ({ I }) => {
   I.pressKey('Tab');
   I.click('pierce/form button');
 
-  I.seeNumberOfElements('div[data-testid="review-item"]', 2); // review items
+  I.seeNumberOfElements({ name: 'review-item' }, 2); // review items
   mockResponse.customerReviews.forEach(({ name, review }) => {
-    I.see(name, 'div[data-testid="review-item"] b');
-    I.see(review, 'div[data-testid="review-item"] p');
+    I.see(name, { css: 'div[name="review-item"] b' });
+    I.see(review, { css: 'div[name="review-item"] p' });
   });
+});
+
+Scenario('seeing restaurant menu', ({ I }) => {
+  I.amOnPage('/');
+  I.seeElement('restaurant-card');
+
+  I.click('pierce/.description-wrapper a.name'); // click first restaurant in list
+
+  I.seeElement('pierce/button.tab-title');
+  I.see('Menu', 'pierce/button.tab-title:last-child');
+
+  I.click('pierce/button.tab-title:last-child');
+  I.see('Makanan', 'tab-content span b');
+  I.see('Minuman', 'tab-content span b');
 });
