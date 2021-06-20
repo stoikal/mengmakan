@@ -117,4 +117,4 @@ class CustomTabs extends HTMLElement {
   }
 }
 
-customElements.define('custom-tabs', CustomTabs);
+customElements.define('tabs-container', CustomTabs);
