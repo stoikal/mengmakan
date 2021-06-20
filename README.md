@@ -5,7 +5,7 @@ yarn
 
 ### Start development server
 ```sh
-yarn start-dev
+yarn dev
 ```
 
 ### Build

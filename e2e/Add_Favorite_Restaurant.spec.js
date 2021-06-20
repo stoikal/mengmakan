@@ -11,7 +11,7 @@ Scenario('showing empty favorites page', async ({ I }) => {
   I.see('Belum ada restoran yang ditambahkan ke favorit!', 'p');
 });
 
-Scenario('adding a restaurant to favorites', async ({ I }) => {
+Scenario('adding a restaurant to favorites from detail page', async ({ I }) => {
   I.see('Belum ada restoran yang ditambahkan ke favorit!', 'p');
 
   I.amOnPage('/');
@@ -23,6 +23,23 @@ Scenario('adding a restaurant to favorites', async ({ I }) => {
 
   I.seeElement('like-button');
   I.click('pierce/#like-button');
+
+  I.amOnPage('/#/favorites');
+  I.seeElement('restaurant-card');
+
+  const likedRestaurant = await I.grabTextFrom('pierce/.description-wrapper a.name');
+
+  assert.strictEqual(likedRestaurant, restaurantName);
+});
+
+Scenario('adding a restaurant to favorites from list page', async ({ I }) => {
+  I.see('Belum ada restoran yang ditambahkan ke favorit!', 'p');
+
+  I.amOnPage('/');
+  I.seeElement('restaurant-card');
+
+  const restaurantName = await I.grabTextFrom('pierce/.description-wrapper a.name');
+  I.click('pierce/.container .like-button');
 
   I.amOnPage('/#/favorites');
   I.seeElement('restaurant-card');

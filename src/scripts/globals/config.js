@@ -8,6 +8,6 @@ export default {
   NAV_LINKS: {
     Home: '/#/',
     Favorites: '/#/favorites',
-    'About Us': 'https://github.com/xlaks',
+    'About Us': 'https://xlaks.github.io/',
   },
 };
