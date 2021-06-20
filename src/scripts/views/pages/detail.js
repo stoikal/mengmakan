@@ -25,7 +25,7 @@ export default {
     const reviewFromNewest = reviews.reverse();
 
     return reviewFromNewest.map(({ name, review, date }) => `
-      <div class=${styles.review}>
+      <div class=${styles.review} data-testid="review-item">
         <span><b>${name}</b> @ ${date} :</span>
         <p>${review}</p>
       </div>
@@ -56,7 +56,7 @@ export default {
       <tabs-container>
         <tab-content title="Review">
           <review-form></review-form>
-          <div class=${styles.reviewContainer}>
+          <div class=${styles.reviewContainer} data-testid="review-container">
             ${this._getReviews(customerReviews)}
           </div>
         </tab-content>

@@ -14,10 +14,16 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "resolutions": {
+    "@pollyjs/adapter-puppeteer": "^5.1.1",
+    "@pollyjs/core": "^5.1.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
-    "@wdio/selenium-standalone-service": "^7.7.3",
+    "@codeceptjs/mock-request": "^0.3.0",
+    "@pollyjs/adapter-puppeteer": "^5.1.1",
+    "@pollyjs/core": "^5.1.1",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "codeceptjs": "^3.0.7",

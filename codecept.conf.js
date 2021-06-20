@@ -13,15 +13,16 @@ exports.config = {
       url: 'http://localhost:8080',
       show: true,
       windowSize: '1200x900',
+      chrome: {
+        args: [
+          '--disable-web-security',
+        ],
+      },
     },
-    // WebDriver: {
-    //   url: 'http://localhost:8080',
-    //   show: true,
-    //   host: '127.0.0.1',
-    //   port: 4444,
-    //   windowSize: '1200x900',
-    //   browser: 'chrome',
-    // },
+    MockRequest: {
+      require: '@codeceptjs/mock-request',
+    },
+    // Polly: {},
   },
   include: {
     I: './steps_file.js',
@@ -40,9 +41,5 @@ exports.config = {
     screenshotOnFail: {
       enabled: true,
     },
-    // wdio: {
-    //   enabled: true,
-    //   services: ['selenium-standalone'],
-    // },
   },
 };
