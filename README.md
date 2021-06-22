@@ -18,11 +18,6 @@ yarn build
 yarn build-images
 ```
 
-### Start development server
-```sh
-yarn start-dev
-```
-
 ### Run integration test
 ```sh
 yarn test
