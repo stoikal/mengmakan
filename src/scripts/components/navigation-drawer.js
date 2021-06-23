@@ -111,21 +111,31 @@ class NavDrawer extends HTMLElement {
     this.$burgerBtn = this._shadowRoot.querySelector('.burger-button');
     this.$closeBtn = this._shadowRoot.querySelector('.close-button');
 
-    // is it better to add listener in the constructor or connectedCallback?
     this.$burgerBtn.addEventListener('click', this._toggleDrawer.bind(this));
     this.$overlay.addEventListener('click', this._toggleDrawer.bind(this));
     this.$closeBtn.addEventListener('click', this._toggleDrawer.bind(this));
+  }
+
+  set links(value) {
+    console.log('set links', value);
+    // this.setAttribute('links', JSON.stringify(value));
   }
 
   get links() {
     return JSON.parse(this.getAttribute('links'));
   }
 
-  set links(value) {
-    this.setAttribute('links', JSON.stringify(value));
+  set test123(value) {
+    console.log('set test');
+    this.setAttribute('test', value);
+  }
+
+  connectedCallback() {
+    console.log('connected');
   }
 
   attributeChangedCallback() {
+    console.log('attr changed');
     this.render();
   }
 

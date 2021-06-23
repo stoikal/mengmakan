@@ -1,14 +1,5 @@
 import 'regenerator-runtime'; /* for async await transpile */
 
-// import './components/lazy-img';
-// import './components/loading-indicator';
-// import './components/restaurant-card';
-// import './components/navigation-drawer';
-// import './components/tabs-container';
-// import './components/tab-content';
-// import './components/like-button';
-// import './components/review-form';
-
 import '../styles/main.css';
 
 import CONFIG from './globals/config';
@@ -39,8 +30,8 @@ Object.entries(NAV_LINKS).forEach(([label, href]) => {
   $desktopNav.append(li);
 });
 
-$mobileNav.links = NAV_LINKS;
 $navbarWrapper.append($mobileNav);
+$mobileNav.setAttribute('links', JSON.stringify(NAV_LINKS));
 
 router.init();
 swRegister();
