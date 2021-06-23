@@ -20,13 +20,13 @@ class Router {
     this.$rootEl.append($loader);
   }
 
-  async _renderPage() {
-    const { hash } = window.location;
+  async _renderPage(urlString) {
+    const pattern = /^#(\/[^#/?]+\/?)+(\?([^#/?])*)?$/;
+    const { hash } = new URL(urlString);
     const path = `/${hash && hash.split('/')[1]}`;
     let $pageContent;
 
-    // ignore skip to main content navigation
-    if (hash === '#main-content') return;
+    if (!pattern.test(hash)) return;
 
     this._renderLoadingIndicator();
 
@@ -47,11 +47,11 @@ class Router {
   }
 
   init() {
-    window.addEventListener('hashchange', () => {
-      this._renderPage();
+    window.addEventListener('hashchange', ({ newURL }) => {
+      this._renderPage(newURL);
     });
 
-    this._renderPage();
+    this._renderPage(window.location.href);
   }
 }
 
