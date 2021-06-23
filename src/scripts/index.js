@@ -7,19 +7,19 @@ import Router from './routes/router';
 import routes from './routes/routes';
 import swRegister from './utils/sw-register';
 
-// defines custom elements
-import(/* webpackPrefetch: true */ './components');
-
 const { NAV_LINKS } = CONFIG;
-const $navbarWrapper = document.getElementById('navbar-wrapper');
 const $desktopNav = document.querySelector('.desktop-nav');
-const $mobileNav = document.createElement('navigation-drawer');
 const $routerRootEl = document.getElementById('main-content');
 
-const router = new Router(
-  $routerRootEl,
-  routes,
-);
+// for webpack bundle splitting
+import(/* webpackPrefetch: true */ './components') // define custom elements
+  .then(() => {
+    const $navbarWrapper = document.getElementById('navbar-wrapper');
+    const $mobileNav = document.createElement('navigation-drawer');
+
+    $navbarWrapper.append($mobileNav);
+    $mobileNav.links = NAV_LINKS;
+  });
 
 Object.entries(NAV_LINKS).forEach(([label, href]) => {
   const li = document.createElement('li');
@@ -30,8 +30,10 @@ Object.entries(NAV_LINKS).forEach(([label, href]) => {
   $desktopNav.append(li);
 });
 
-$navbarWrapper.append($mobileNav);
-$mobileNav.setAttribute('links', JSON.stringify(NAV_LINKS));
+const router = new Router(
+  $routerRootEl,
+  routes,
+);
 
 router.init();
 swRegister();

@@ -116,12 +116,12 @@ class NavDrawer extends HTMLElement {
     this.$closeBtn.addEventListener('click', this._toggleDrawer.bind(this));
   }
 
-  set links(value) {
-    this.setAttribute('links', JSON.stringify(value));
-  }
-
   get links() {
     return JSON.parse(this.getAttribute('links'));
+  }
+
+  set links(value) {
+    this.setAttribute('links', JSON.stringify(value));
   }
 
   attributeChangedCallback() {
