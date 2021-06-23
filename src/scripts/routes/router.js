@@ -32,7 +32,7 @@ class Router {
 
     try {
       $pageContent = await (this.routes[path] || notFound).render({
-        renderPage: this._renderPage.bind(this),
+        renderPage: this._renderPage.bind(this, urlString),
         path,
         $rootEl: this.$rootEl,
       });
