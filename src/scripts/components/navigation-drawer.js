@@ -11,7 +11,7 @@ template.innerHTML = `
       padding: none;
       border-radius: 50%;
       height: 48px;
-      width: 48px;
+      width: 56px;
       font-size: 1.5em;
       color: white;
       background-color: transparent;
@@ -117,25 +117,14 @@ class NavDrawer extends HTMLElement {
   }
 
   set links(value) {
-    console.log('set links', value);
-    // this.setAttribute('links', JSON.stringify(value));
+    this.setAttribute('links', JSON.stringify(value));
   }
 
   get links() {
     return JSON.parse(this.getAttribute('links'));
   }
 
-  set test123(value) {
-    console.log('set test');
-    this.setAttribute('test', value);
-  }
-
-  connectedCallback() {
-    console.log('connected');
-  }
-
   attributeChangedCallback() {
-    console.log('attr changed');
     this.render();
   }
 

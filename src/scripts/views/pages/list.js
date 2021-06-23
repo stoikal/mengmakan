@@ -12,6 +12,7 @@ export default {
 
     list.forEach(async (restaurant) => {
       const $restaurantCard = document.createElement('restaurant-card');
+      $restaurantCard.setAttribute('tabindex', '0');
       $restaurantCard.details = restaurant;
       const favRestaurantToggler = new FavoriteRestaurantToggler({
         trigger: $restaurantCard,

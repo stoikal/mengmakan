@@ -4,9 +4,9 @@ template.innerHTML = `
     button {
       border-radius: 50%;
       border: 1px solid black;
-      font-size: 2em;
-      height: 48px;
-      width: 48px;
+      font-size: 2.5em;
+      height: 60px;
+      width: 60px;
       padding: 0;
       cursor: pointer;
       position: fixed;
@@ -55,7 +55,7 @@ class LikeButton extends HTMLElement {
 
   set liked(value) {
     if (value) {
-      this.setAttribute('liked', true);
+      this.setAttribute('liked', '');
     } else {
       this.removeAttribute('liked');
     }

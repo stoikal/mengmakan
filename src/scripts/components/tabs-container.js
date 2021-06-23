@@ -7,6 +7,7 @@ template.innerHTML = `
     }
 
     .tab-title {
+      color: gray;
       height: 3em;
       border: none;
       border-bottom: 4px solid #bdbdbd;
@@ -16,10 +17,12 @@ template.innerHTML = `
     }
 
     .tab-title:hover {
+      color: black;
       background: rgba(100, 100, 100, 0.2);
     }
 
     .tab-title.active {
+      color: black;
       font-weight: bold;
       border-bottom: 4px solid black;
     }

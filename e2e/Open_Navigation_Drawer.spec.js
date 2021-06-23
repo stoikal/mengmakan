@@ -7,9 +7,9 @@ const NAV_LINKS = {
   'About Us': 'https://xlaks.github.io/',
 };
 
-Scenario('showing navigation for mobile view', async ({ I }) => {
+Scenario.only('showing navigation drawer for mobile view', async ({ I }) => {
   I.amOnPage('/');
-  I.dontSeeElement('pierce/.burger-button');
+  I.dontSeeElement({ css: 'pierce/.burger-button' });
 
   I.usePuppeteerTo('change viewport width', async ({ page }) => {
     await page.setViewport({
@@ -18,8 +18,8 @@ Scenario('showing navigation for mobile view', async ({ I }) => {
     });
   });
 
-  I.seeElement('pierce/.burger-button');
-  I.click('pierce/.burger-button');
+  I.seeElement({ css: 'pierce/.burger-button' });
+  I.click({ css: 'pierce/.burger-button' });
 
   Object.entries(NAV_LINKS).forEach(([label, link]) => {
     I.see(label, { css: `pierce/a[href="${link}"]` });

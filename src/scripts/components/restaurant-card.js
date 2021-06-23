@@ -12,6 +12,7 @@ template.innerHTML = `
     a {
       display: inline-block;
       min-height: 48px;
+      min-width: 48px;
     }
 
     .container {
@@ -53,13 +54,13 @@ template.innerHTML = `
       font-weight: bold;
       font-size: 2.5em;
       color: grey;
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       cursor: pointer;
     }
 
     .like-button:hover {
-      height: 56px;
+      height: 60px;
     }
 
     .like-button.liked {

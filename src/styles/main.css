@@ -13,19 +13,30 @@ body {
 
 a {
   color: inherit;
+  display: inline-block;
+  /* min-width: 48px; */
+  min-height: 48px;
+  line-height: 48px;
+}
+
+button {
+  min-width: 48px;
+  min-height: 48px;
 }
 
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: -64px;
   left: 0;
   background-color: #bf1722;
   color: white;
   padding: 8px;
   z-index: 100;
+  font-weight: bold;
 }
 
 .skip-link:focus {
+  position: fixed;
   top: 0;
 }
 
