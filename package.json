@@ -9,7 +9,8 @@
     "build-images": "node sharp.js",
     "test": "karma start",
     "lint": "eslint ./src --fix",
-    "e2e": "codeceptjs run --steps"
+    "e2e": "codeceptjs run --steps",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     "eslint": "^7.26.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
+    "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^4.3.0",
     "jasmine": "^3.7.0",
     "jasmine-ajax": "^4.0.0",
@@ -58,7 +60,7 @@
     "regenerator-runtime": "^0.13.5",
     "serviceworker-webpack-plugin": "^1.0.1"
   },
-  "engines" : { 
-    "node" : ">=14.0.0" 
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
