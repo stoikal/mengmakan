@@ -1,5 +1,4 @@
 import 'regenerator-runtime'; /* for async await transpile */
-
 import '../styles/main.css';
 
 import CONFIG from './globals/config';
@@ -8,8 +7,8 @@ import routes from './routes/routes';
 import swRegister from './utils/sw-register';
 
 const { NAV_LINKS } = CONFIG;
-const $desktopNav = document.querySelector('.desktop-nav');
 const $routerRootEl = document.getElementById('main-content');
+const $desktopNav = document.querySelector('.desktop-nav');
 
 // for webpack bundle splitting
 import(/* webpackPrefetch: true */ './components') // define custom elements
@@ -17,8 +16,8 @@ import(/* webpackPrefetch: true */ './components') // define custom elements
     const $navbarWrapper = document.getElementById('navbar-wrapper');
     const $mobileNav = document.createElement('navigation-drawer');
 
-    $navbarWrapper.append($mobileNav);
     $mobileNav.links = NAV_LINKS;
+    $navbarWrapper.append($mobileNav);
   });
 
 Object.entries(NAV_LINKS).forEach(([label, href]) => {
