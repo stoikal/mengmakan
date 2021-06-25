@@ -30,10 +30,9 @@ const mockResponse = {
 Scenario('submitting new review', async ({ I }) => {
   I.seeElement('review-form');
   I.mockRequest('POST', 'https://restaurant-api.dicoding.dev/review', mockResponse);
-  I.fillField('pierce/input#name', newReview.name);
-  I.fillField('pierce/textarea#review', newReview.review);
-  I.pressKey('Tab');
-  I.click('pierce/form button');
+  I.fillField({ css: 'pierce/input#name' }, newReview.name);
+  I.fillField({ css: 'pierce/textarea#review' }, newReview.review);
+  I.click({ css: 'pierce/form button' });
 
   I.seeNumberOfElements({ name: 'review-item' }, 2); // review items
   mockResponse.customerReviews.forEach(({ name, review }) => {

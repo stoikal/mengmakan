@@ -21,7 +21,7 @@ class Router {
   }
 
   async _renderPage(urlString) {
-    const pattern = /^#(\/[^#/?]+)*\/?(\?([^#/?])*)?$/;
+    const pattern = /^(#(\/[^#/?]+)*)?\/?(\?([^#/?])*)?$/;
     const { hash } = new URL(urlString);
     const path = `/${hash && hash.split('/')[1]}`;
     let $pageContent;

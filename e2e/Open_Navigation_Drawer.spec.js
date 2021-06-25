@@ -7,7 +7,7 @@ const NAV_LINKS = {
   'About Us': 'https://xlaks.github.io/',
 };
 
-Scenario.only('showing navigation drawer for mobile view', async ({ I }) => {
+Scenario('showing navigation drawer for mobile view', async ({ I }) => {
   I.amOnPage('/');
   I.dontSeeElement({ css: 'pierce/.burger-button' });
 

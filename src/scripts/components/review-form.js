@@ -7,16 +7,20 @@ template.innerHTML = `
     }
 
     input {
-      margin-bottom: 0.5em;
+      min-height: 48px;
+      margin-bottom: 1em;
       line-height: 2em;
       font-size: 1em;
+      padding: 0.5em 1em;
     }
 
     textarea {
+      min-height: 48px;
+      padding: 0.5em 1em;
       margin-bottom: 0.5em;
       width: 100%;
       max-width: 600px;
-      line-height: 1.5em;
+      line-height: 2em;
       font-size: 1em;
     }
 
@@ -54,7 +58,7 @@ class ReviewForm extends HTMLElement {
     const $button = this._shadowRoot.querySelector('button');
     const { name, review } = this._formValues;
 
-    if (name && review) {
+    if (name.trim() && review.trim()) {
       $button.removeAttribute('disabled');
     } else if (!$button.hasAttribute('disabled')) {
       $button.setAttribute('disabled', '');
@@ -77,7 +81,7 @@ class ReviewForm extends HTMLElement {
   connectedCallback() {
     const $form = this._shadowRoot.querySelector('form');
 
-    $form.addEventListener('change', (e) => {
+    $form.addEventListener('input', (e) => {
       const { id, value } = e.target;
 
       this._formValues = {
